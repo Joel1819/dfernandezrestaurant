@@ -67,15 +67,21 @@
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
         
         .section-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            width: 80px;
+            height: 80px;
             object-fit: cover;
-            border: 2px solid #e74c3c;
+            border: 3px solid #e74c3c;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .section-icon:hover {
+            transform: scale(1.05);
         }
         
         .menu-items {
@@ -172,11 +178,13 @@
             
             .section-title {
                 font-size: 1.6rem;
+                gap: 15px;
             }
             
             .section-icon {
-                width: 35px;
-                height: 35px;
+                width: 60px;
+                height: 60px;
+                border-width: 2px;
             }
             
             .menu-item {
@@ -229,11 +237,12 @@
             
             .section-title {
                 font-size: 1.4rem;
+                gap: 12px;
             }
             
             .section-icon {
-                width: 30px;
-                height: 30px;
+                width: 50px;
+                height: 50px;
             }
             
             .menu-item {
@@ -260,8 +269,12 @@
                 }
                 
                 .section-icon {
-                    width: 25px;
-                    height: 25px;
+                    width: 40px;
+                    height: 40px;
+                }
+                
+                .section-title {
+                    gap: 8px;
                 }
             }
         }
@@ -295,7 +308,7 @@
         <!-- SECCIÓN SOPA -->
         <div class="menu-section">
             <h2 class="section-title">
-                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sopa" class="section-icon">
+                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Sopa" class="section-icon">
                 SOPA
             </h2>
             <ul class="menu-items">
@@ -323,7 +336,7 @@
         <!-- SECCIÓN PICADERAS -->
         <div class="menu-section">
             <h2 class="section-title">
-                <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Picaderas" class="section-icon">
+                <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Picaderas" class="section-icon">
                 PICADERAS
             </h2>
             <ul class="menu-items">
@@ -359,7 +372,7 @@
         <!-- SECCIÓN PESCADOS Y MARISCOS -->
         <div class="menu-section">
             <h2 class="section-title">
-                <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Pescados y Mariscos" class="section-icon">
+                <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Pescados y Mariscos" class="section-icon">
                 PESCADOS Y MARISCOS
             </h2>
             <ul class="menu-items">
@@ -407,7 +420,7 @@
         <!-- SECCIÓN ENSALADAS -->
         <div class="menu-section">
             <h2 class="section-title">
-                <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Ensaladas" class="section-icon">
+                <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Ensaladas" class="section-icon">
                 ENSALADAS
             </h2>
             <ul class="menu-items">
@@ -431,7 +444,7 @@
         <!-- SECCIÓN PASTAS -->
         <div class="menu-section">
             <h2 class="section-title">
-                <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Pastas" class="section-icon">
+                <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Pastas" class="section-icon">
                 PASTAS
             </h2>
             <ul class="menu-items">
@@ -487,7 +500,7 @@
         <!-- SECCIÓN PIZZA -->
         <div class="menu-section">
             <h2 class="section-title">
-                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Pizza" class="section-icon">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Pizza" class="section-icon">
                 PIZZA
             </h2>
             <ul class="menu-items">
@@ -527,7 +540,7 @@
         <!-- SECCIÓN MOFONGOS -->
         <div class="menu-section">
             <h2 class="section-title">
-                <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Mofongos" class="section-icon">
+                <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Mofongos" class="section-icon">
                 MOFONGOS
             </h2>
             <ul class="menu-items">
@@ -555,7 +568,7 @@
         <!-- SECCIÓN SANDWICH -->
         <div class="menu-section">
             <h2 class="section-title">
-                <img src="https://images.unsplash.com/photo-1481070414801-51fd732d7184?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sandwich" class="section-icon">
+                <img src="https://images.unsplash.com/photo-1481070414801-51fd732d7184?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Sandwich" class="section-icon">
                 SANDWICH
             </h2>
             <ul class="menu-items">
@@ -606,7 +619,7 @@
             <!-- SECCIÓN BEBIDAS CON ALCOHOL -->
             <div class="menu-section">
                 <h2 class="section-title">
-                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Bebidas con Alcohol" class="section-icon">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Bebidas con Alcohol" class="section-icon">
                     BEBIDAS CON ALCOHOL
                 </h2>
                 <table class="drinks-table">
@@ -698,7 +711,7 @@
             <!-- SECCIÓN CARNES -->
             <div class="menu-section">
                 <h2 class="section-title">
-                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Carnes" class="section-icon">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Carnes" class="section-icon">
                     CARNES
                 </h2>
                 <ul class="menu-items">
@@ -754,7 +767,7 @@
             <!-- SECCIÓN AVES -->
             <div class="menu-section">
                 <h2 class="section-title">
-                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Aves" class="section-icon">
+                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Aves" class="section-icon">
                     AVES
                 </h2>
                 <ul class="menu-items">
@@ -798,7 +811,7 @@
             <!-- SECCIÓN ARROCES -->
             <div class="menu-section">
                 <h2 class="section-title">
-                    <img src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Arroces" class="section-icon">
+                    <img src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Arroces" class="section-icon">
                     ARROCES
                 </h2>
                 <ul class="menu-items">
@@ -830,7 +843,7 @@
             <!-- SECCIÓN ACOMPAÑAMIENTOS -->
             <div class="menu-section">
                 <h2 class="section-title">
-                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Acompañamientos" class="section-icon">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Acompañamientos" class="section-icon">
                     ACOMPAÑAMIENTOS
                 </h2>
                 <ul class="menu-items">
@@ -854,7 +867,7 @@
             <!-- SECCIÓN CAFÉ -->
             <div class="menu-section">
                 <h2 class="section-title">
-                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Café" class="section-icon">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Café" class="section-icon">
                     CAFÉ
                 </h2>
                 <ul class="menu-items">
@@ -881,6 +894,7 @@
     </div>
 </body>
 </html>
+
 
 
 
