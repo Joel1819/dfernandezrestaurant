@@ -3,1018 +3,629 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú D' Fernandez Restaurant</title>
+    <title>Menú - D' Fernandez Restaurant Gourmet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a5276;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #333;
+            --gray: #7f8c8d;
         }
         
         body {
-            font-family: 'Arial', sans-serif;
             background-color: #f5f5f5;
-            color: #333;
+            color: var(--dark);
             line-height: 1.6;
+            padding-top: 120px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
             padding: 20px;
-        }
-        
-        .menu-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-        }
-        
-        /* Encabezado */
-        .restaurant-header {
             text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #2c3e50;
-            position: relative;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         .restaurant-name {
-            font-size: 2.8rem;
-            color: #2c3e50;
+            font-size: 2.5rem;
             margin-bottom: 5px;
             font-weight: bold;
         }
         
         .restaurant-subtitle {
             font-size: 1.2rem;
-            color: #7f8c8d;
             letter-spacing: 3px;
-            text-transform: uppercase;
+            opacity: 0.9;
+        }
+        
+        /* Navegación */
+        .nav {
+            background: white;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: fixed;
+            top: 90px;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow-x: auto;
+        }
+        
+        .nav-btn {
+            background: var(--light);
+            border: 2px solid #ddd;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            color: var(--secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
         
         /* Secciones del menú */
-        .menu-section {
-            margin-bottom: 25px;
-            position: relative;
-            padding-top: 20px;
+        .section {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            scroll-margin-top: 120px;
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .section-title {
             font-size: 1.8rem;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #e74c3c;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 20px;
         }
         
         .section-icon {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border: 3px solid #e74c3c;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            font-size: 1.5rem;
         }
         
-        .section-icon:hover {
-            transform: scale(1.05);
+        /* Productos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 25px;
         }
         
-        .menu-items {
-            list-style: none;
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border: 1px solid #eee;
         }
         
-        /* ITEM DEL MENÚ MEJORADO - FLEX PARA MÓVIL */
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px dotted #ddd;
-            min-height: 45px;
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         
-        .menu-item:last-child {
-            border-bottom: none;
-        }
-        
-        .item-name {
-            font-weight: bold;
-            flex: 1;
-            padding-right: 15px;
-            font-size: 1.05rem;
-        }
-        
-        .item-price {
-            font-weight: bold;
-            color: #e74c3c;
-            min-width: 120px;
-            text-align: right;
-            font-size: 1.1rem;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-        
-        /* Tabla para bebidas */
-        .drinks-table {
+        .product-image {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
+            height: 180px;
+            object-fit: cover;
+            background: #f5f5f5;
         }
         
-        .drinks-table th {
-            background-color: #2c3e50;
-            color: white;
-            padding: 12px 10px;
-            text-align: left;
-            font-weight: bold;
-        }
-        
-        .drinks-table td {
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .drinks-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        
-        /* Separador */
-        .divider {
-            height: 2px;
-            background-color: #eee;
-            margin: 25px 0;
-        }
-        
-        /* Nota de impuestos */
-        .tax-note {
-            text-align: center;
-            margin-top: 30px;
+        .product-info {
             padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 8px;
             font-weight: bold;
-            border: 1px solid #ddd;
         }
         
-        /* RESPONSIVE MEJORADO PARA MÓVILES */
+        .product-description {
+            color: var(--gray);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .product-price {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+            text-align: right;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .menu-container {
-                padding: 20px 15px;
-            }
-            
-            .restaurant-name {
-                font-size: 2.2rem;
-            }
-            
-            .restaurant-subtitle {
-                font-size: 1rem;
-                letter-spacing: 2px;
-            }
-            
-            .section-title {
-                font-size: 1.6rem;
-                gap: 15px;
-            }
-            
-            .section-icon {
-                width: 60px;
-                height: 60px;
-                border-width: 2px;
-            }
-            
-            .menu-item {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                padding: 10px 0;
-                min-height: 40px;
-            }
-            
-            .item-name {
-                font-size: 1rem;
-                padding-right: 10px;
-                overflow-wrap: break-word;
-                word-wrap: break-word;
-                flex: 1;
-            }
-            
-            .item-price {
-                text-align: right;
-                margin-top: 0;
-                min-width: 100px;
-                font-size: 1rem;
-                align-self: center;
-            }
-            
-            .drinks-table {
-                font-size: 0.9rem;
-            }
-            
-            .drinks-table th,
-            .drinks-table td {
-                padding: 8px 6px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-            
-            .menu-container {
-                padding: 15px 12px;
-                border-radius: 5px;
-            }
-            
-            .restaurant-name {
-                font-size: 1.9rem;
-            }
-            
-            .section-title {
-                font-size: 1.4rem;
-                gap: 12px;
-            }
-            
-            .section-icon {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .menu-item {
-                padding: 8px 0;
-            }
-            
-            .item-name {
-                font-size: 0.95rem;
-            }
-            
-            .item-price {
-                font-size: 0.95rem;
-                min-width: 90px;
-            }
-            
-            @media (max-width: 350px) {
-                .item-price {
-                    min-width: 80px;
-                    font-size: 0.9rem;
-                }
-                
-                .item-name {
-                    font-size: 0.9rem;
-                }
-                
-                .section-icon {
-                    width: 40px;
-                    height: 40px;
-                }
-                
-                .section-title {
-                    gap: 8px;
-                }
-            }
-        }
-        
-        /* Para impresión */
-        @media print {
-            body {
-                background-color: white;
-                padding: 0;
-            }
-            
-            .menu-container {
-                box-shadow: none;
+            .products-grid {
+                grid-template-columns: 1fr;
                 padding: 15px;
             }
             
-            .section-icon {
-                display: none;
+            .nav {
+                padding: 10px;
+                justify-content: flex-start;
             }
+            
+            .nav-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            body {
+                padding-top: 140px;
+            }
+            
+            .nav {
+                top: 90px;
+            }
+            
+            .section {
+                scroll-margin-top: 140px;
+            }
+        }
+        
+        /* Botón volver arriba */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: none;
+            z-index: 100;
+        }
+        
+        .back-to-top.show {
+            display: flex;
+        }
+        
+        /* Nota impuestos */
+        .tax-note {
+            text-align: center;
+            background: #e8f4fc;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 30px 0;
+            font-weight: bold;
+            border-left: 5px solid var(--primary);
         }
     </style>
 </head>
 <body>
-    <div class="menu-container">
-        <!-- Encabezado -->
-        <div class="restaurant-header">
-            <h1 class="restaurant-name">D' Fernandez</h1>
-            <div class="restaurant-subtitle">RESTAURANT</div>
+    <!-- Header -->
+    <header class="header">
+        <h1 class="restaurant-name">D' Fernandez</h1>
+        <div class="restaurant-subtitle">RESTAURANT GOURMET</div>
+        <div style="margin-top: 10px; font-size: 1rem;">
+            <i class="fas fa-phone"></i> Reservas: 809-555-1234
         </div>
+    </header>
+    
+    <!-- Navegación -->
+    <nav class="nav">
+        <button class="nav-btn active" data-section="entradas">ENTRADAS</button>
+        <button class="nav-btn" data-section="sopas">SOPAS</button>
+        <button class="nav-btn" data-section="ensaladas">ENSALADAS</button>
+        <button class="nav-btn" data-section="pescados">PESCADOS</button>
+        <button class="nav-btn" data-section="carnes">CARNES</button>
+        <button class="nav-btn" data-section="aves">AVES</button>
+        <button class="nav-btn" data-section="pastas">PASTAS</button>
+        <button class="nav-btn" data-section="pizza">PIZZA</button>
+        <button class="nav-btn" data-section="bebidas">BEBIDAS</button>
+        <button class="nav-btn" data-section="postres">POSTRES</button>
+    </nav>
+    
+    <!-- Contenido principal -->
+    <main class="container">
         
-        <!-- SECCIÓN SOPA -->
-        <div class="menu-section">
-            <h2 class="section-title">
-                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Sopa" class="section-icon">
-                SOPA
-            </h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <span class="item-name">SOPA DE POLLO</span>
-                    <span class="item-price">RD$ 550.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">SOPA DE VEGETALES</span>
-                    <span class="item-price">RD$ 490.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">SOPA DE PESCADO</span>
-                    <span class="item-price">RD$ 680.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">SOPA DE MARISCOS</span>
-                    <span class="item-price">RD$ 825.00</span>
-                </li>
-            </ul>
-        </div>
+        <!-- Entradas -->
+        <section id="entradas" class="section">
+            <div class="section-header">
+                <h2 class="section-title">ENTRADAS</h2>
+                <i class="fas fa-utensils section-icon"></i>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Empanadillas" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">EMPANADILLAS DE CARNE</h3>
+                        <p class="product-description">Deliciosas empanadillas rellenas de carne sazonada con especias especiales.</p>
+                        <div class="product-price">RD$ 120.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bolitas de queso" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">BOLITAS DE QUESO</h3>
+                        <p class="product-description">Crujientes bolitas de queso fundido con salsa especial de la casa.</p>
+                        <div class="product-price">RD$ 150.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Aros de cebolla" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">AROS DE CEBOLLA</h3>
+                        <p class="product-description">Aros de cebolla dorados, empanizados y acompañados con salsa.</p>
+                        <div class="product-price">RD$ 140.00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <div class="divider"></div>
+        <!-- Sopas -->
+        <section id="sopas" class="section">
+            <div class="section-header">
+                <h2 class="section-title">SOPAS</h2>
+                <i class="fas fa-utensil-spoon section-icon"></i>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sopa de pollo" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">SOPA DE POLLO CASERA</h3>
+                        <p class="product-description">Sopa tradicional con pollo, verduras frescas y fideos.</p>
+                        <div class="product-price">RD$ 180.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sopa de mariscos" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">SOPA DE MARISCOS</h3>
+                        <p class="product-description">Exquisita sopa con una variedad de mariscos frescos del día.</p>
+                        <div class="product-price">RD$ 250.00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <!-- SECCIÓN PICADERAS -->
-        <div class="menu-section">
-            <h2 class="section-title">
-                <img src="picaderas.png" alt="Picaderas" class="section-icon">
-                PICADERAS
-            </h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <span class="item-name">CROQUETAS</span>
-                    <span class="item-price">RD$ 295.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">BASTONCITOS DE MERO</span>
-                    <span class="item-price">RD$ 625.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">PICADERA MIXTA (4 PERSONAS)</span>
-                    <span class="item-price">RD$ 1,550.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">PICADERA MIXTA (6 PERSONAS)</span>
-                    <span class="item-price">RD$ 2,100.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">FILETE DE RES PICADO</span>
-                    <span class="item-price">RD$ 725.00</span>
-                </li>
-            </ul>
-        </div>
+        <!-- Ensaladas -->
+        <section id="ensaladas" class="section">
+            <div class="section-header">
+                <h2 class="section-title">ENSALADAS</h2>
+                <i class="fas fa-leaf section-icon"></i>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="César con pollo" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">ENSALADA CÉSAR CON POLLO</h3>
+                        <p class="product-description">Clásica ensalada César con pollo a la parrilla y aderezo especial.</p>
+                        <div class="product-price">RD$ 220.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ensalada mixta" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">ENSALADA MIXTA</h3>
+                        <p class="product-description">Mezcla de lechugas, tomate, cebolla, aceitunas y aderezo.</p>
+                        <div class="product-price">RD$ 180.00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <div class="divider"></div>
+        <!-- Pescados -->
+        <section id="pescados" class="section">
+            <div class="section-header">
+                <h2 class="section-title">PESCADOS Y MARISCOS</h2>
+                <i class="fas fa-fish section-icon"></i>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Salmón" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">SALMÓN A LA PLANCHA</h3>
+                        <p class="product-description">Filete de salmón fresco con guarnición de vegetales al vapor.</p>
+                        <div class="product-price">RD$ 350.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camarones" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">CAMARONES AL AJILLO</h3>
+                        <p class="product-description">Camarones salteados con ajo, mantequilla y hierbas.</p>
+                        <div class="product-price">RD$ 320.00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <!-- SECCIÓN PESCADOS Y MARISCOS -->
-        <div class="menu-section">
-            <h2 class="section-title">
-                <img src="pescados y mariscos.jpg" alt="Pescados y Mariscos" class="section-icon">
-                PESCADOS Y MARISCOS
-            </h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <span class="item-name">SALMÓN</span>
-                    <span class="item-price">RD$ 1,150.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">MERO A LA PLANCHA</span>
-                    <span class="item-price">RD$ 690.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">MERO A LA ROMANA</span>
-                    <span class="item-price">RD$ 750.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">MERO AL AJILLO</span>
-                    <span class="item-price">RD$ 690.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">MERO A LA CRIOLLA</span>
-                    <span class="item-price">RD$ 725.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">CAMARONES AL AJILLO</span>
-                    <span class="item-price">RD$ 895.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">CAMARONES A LA CRIOLLA</span>
-                    <span class="item-price">RD$ 895.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">LAMBÍ AL AJILLO</span>
-                    <span class="item-price">RD$ 895.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">LAMBÍ A LA CRIOLLA</span>
-                    <span class="item-price">RD$ 895.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">LAMBÍ A LA VINAGRETA</span>
-                    <span class="item-price">RD$ 895.00</span>
-                </li>
-            </ul>
-        </div>
+        <!-- Carnes -->
+        <section id="carnes" class="section">
+            <div class="section-header">
+                <h2 class="section-title">CARNES</h2>
+                <i class="fas fa-drumstick-bite section-icon"></i>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Churrasco" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">CHURRASCO CORRIENTE</h3>
+                        <p class="product-description">Corte premium a la parrilla con guarnición a elección.</p>
+                        <div class="product-price">RD$ 750.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Filete Mignon" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">FILETE MIGNON</h3>
+                        <p class="product-description">El más fino corte de res, preparado a su preferencia.</p>
+                        <div class="product-price">RD$ 850.00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <div class="divider"></div>
+        <!-- Aves -->
+        <section id="aves" class="section">
+            <div class="section-header">
+                <h2 class="section-title">AVES</h2>
+                <i class="fas fa-drumstick-bite section-icon"></i>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alitas" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">ALITAS BUFFALO</h3>
+                        <p class="product-description">Alitas de pollo bañadas en salsa buffalo picante.</p>
+                        <div class="product-price">RD$ 280.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pechuga" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">PECHUGA A LA PARRILLA</h3>
+                        <p class="product-description">Pechuga de pollo a la parrilla con hierbas aromáticas.</p>
+                        <div class="product-price">RD$ 320.00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <!-- SECCIÓN ENSALADAS -->
-        <div class="menu-section">
-            <h2 class="section-title">
-                <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Ensaladas" class="section-icon">
-                ENSALADAS
-            </h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <span class="item-name">CÉSAR CON POLLO</span>
-                    <span class="item-price">RD$ 640.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">CÉSAR CON CAMARONES</span>
-                    <span class="item-price">RD$ 850.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">CÉSAR</span>
-                    <span class="item-price">RD$ 450.00</span>
-                </li>
-            </ul>
-        </div>
+        <!-- Pastas -->
+        <section id="pastas" class="section">
+            <div class="section-header">
+                <h2 class="section-title">PASTAS</h2>
+                <i class="fas fa-pasta section-icon"></i>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alfredo" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">FETTUCCINE ALFREDO</h3>
+                        <p class="product-description">Pasta con salsa cremosa Alfredo y queso parmesano.</p>
+                        <div class="product-price">RD$ 280.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1598866594230-a7c12756260f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Spaghetti" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">SPAGHETTI BOLOGNESA</h3>
+                        <p class="product-description">Spaghetti con salsa boloñesa de carne tradicional.</p>
+                        <div class="product-price">RD$ 260.00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <div class="divider"></div>
+        <!-- Pizza -->
+        <section id="pizza" class="section">
+            <div class="section-header">
+                <h2 class="section-title">PIZZA</h2>
+                <i class="fas fa-pizza-slice section-icon"></i>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pizza" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">PIZZA HAWAIANA</h3>
+                        <p class="product-description">Pizza con jamón, queso y piña tropical.</p>
+                        <div class="product-price">RD$ 350.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pizza" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">PIZZA PEPPERONI</h3>
+                        <p class="product-description">Pizza con doble pepperoni y queso mozzarella.</p>
+                        <div class="product-price">RD$ 380.00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <!-- SECCIÓN PASTAS -->
-        <div class="menu-section">
-            <h2 class="section-title">
-                <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Pastas" class="section-icon">
-                PASTAS
-            </h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <span class="item-name">ALFREDO</span>
-                    <span class="item-price">RD$ 600.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">SPAGHETTI POMODORO</span>
-                    <span class="item-price">RD$ 460.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">SPAGHETTI A LA CARBONARA</span>
-                    <span class="item-price">RD$ 560.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">SPAGHETTI A LA BOLOÑESA</span>
-                    <span class="item-price">RD$ 580.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">CON CAMARONES A LA CREMA</span>
-                    <span class="item-price">RD$ 860.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">BURRITOS: POLLO, RES, MIXTO</span>
-                    <span class="item-price">RD$ 480.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">TACOS</span>
-                    <span class="item-price">RD$ 195.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">QUESADILLA</span>
-                    <span class="item-price">RD$ 450.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">YAROA DE PAPAS PEQUEÑA</span>
-                    <span class="item-price">RD$ 450.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">YAROA DE PAPAS MEDIANA</span>
-                    <span class="item-price">RD$ 560.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">YAROA DE PAPAS GRANDE</span>
-                    <span class="item-price">RD$ 680.00</span>
-                </li>
-            </ul>
-        </div>
+        <!-- Bebidas -->
+        <section id="bebidas" class="section">
+            <div class="section-header">
+                <h2 class="section-title">BEBIDAS</h2>
+                <i class="fas fa-glass-whiskey section-icon"></i>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Refrescos" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">REFRESCOS</h3>
+                        <p class="product-description">Coca-Cola, Sprite, Fanta (500ml).</p>
+                        <div class="product-price">RD$ 80.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Café" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">CAFÉ ESPRESSO</h3>
+                        <p class="product-description">Café negro fuerte y aromático.</p>
+                        <div class="product-price">RD$ 100.00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <div class="divider"></div>
+        <!-- Postres -->
+        <section id="postres" class="section">
+            <div class="section-header">
+                <h2 class="section-title">POSTRES</h2>
+                <i class="fas fa-ice-cream section-icon"></i>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Flan" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">FLAN DE LA CASA</h3>
+                        <p class="product-description">Delicioso flan casero con caramelo.</p>
+                        <div class="product-price">RD$ 120.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Helado" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">HELADO DE VAINILLA</h3>
+                        <p class="product-description">Helado casero de vainilla con toppings.</p>
+                        <div class="product-price">RD$ 100.00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <!-- SECCIÓN PIZZA -->
-        <div class="menu-section">
-            <h2 class="section-title">
-                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Pizza" class="section-icon">
-                PIZZA
-            </h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <span class="item-name">PIZZA DE JAMÓN Y QUESO</span>
-                    <span class="item-price">RD$ 690.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">PIZZA DE JAMÓN, QUESO Y MAÍZ</span>
-                    <span class="item-price">RD$ 740.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">PIZZA DE JAMÓN, QUESO Y PEPPERONI</span>
-                    <span class="item-price">RD$ 795.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">PIZZA DE VEGETALES</span>
-                    <span class="item-price">RD$ 825.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">PIZZA DE POLLO</span>
-                    <span class="item-price">RD$ 925.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">PIZZA FERNÁNDEZ</span>
-                    <span class="item-price">RD$ 1250.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">ADICIONALES: MAÍZ, JAMÓN Y PEPPERONI</span>
-                    <span class="item-price">RD$ 180.00</span>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="divider"></div>
-        
-        <!-- SECCIÓN MOFONGOS -->
-        <div class="menu-section">
-            <h2 class="section-title">
-                <img src="mofongo.jpg" alt="Mofongos" class="section-icon">
-                MOFONGOS
-            </h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <span class="item-name">MOFONGO DE CAMARÓN</span>
-                    <span class="item-price">RD$ 795.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">MOFONGO DE POLLO</span>
-                    <span class="item-price">RD$ 625.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">MOFONGO DE CHICHARRÓN</span>
-                    <span class="item-price">RD$ 695.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">QUESO ADICIONAL</span>
-                    <span class="item-price">RD$ 180.00</span>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="divider"></div>
-        
-        <!-- SECCIÓN SANDWICH -->
-        <div class="menu-section">
-            <h2 class="section-title">
-                <img src="https://images.unsplash.com/photo-1481070414801-51fd732d7184?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Sandwich" class="section-icon">
-                SANDWICH
-            </h2>
-            <ul class="menu-items">
-                <li class="menu-item">
-                    <span class="item-name">JAMÓN Y QUESO</span>
-                    <span class="item-price">RD$ 270.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">PIERNA</span>
-                    <span class="item-price">RD$ 470.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">POLLO Y QUESO</span>
-                    <span class="item-price">RD$ 450.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">CLUB SANDWICH</span>
-                    <span class="item-price">RD$ 495.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">CUBANO</span>
-                    <span class="item-price">RD$ 480.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">CHEESEBURGER</span>
-                    <span class="item-price">RD$ 395.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="item-name">HAMBURGER</span>
-                    <span class="item-price">RD$ 350.00</span>
-                </li>
-            </ul>
-        </div>
-        
-        <!-- NOTA DE IMPUESTOS -->
+        <!-- Nota impuestos -->
         <div class="tax-note">
-            IMPUESTO INCLUIDO EN TODOS LOS PRECIOS
+            <i class="fas fa-receipt"></i> IMPUESTO INCLUIDO EN TODOS LOS PRECIOS
         </div>
+    </main>
+    
+    <!-- Botón volver arriba -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        // Navegación entre secciones
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.dataset.section;
+                const section = document.getElementById(sectionId);
+                
+                if (section) {
+                    // Quitar activo de todos los botones
+                    document.querySelectorAll('.nav-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Activar botón clickeado
+                    button.classList.add('active');
+                    
+                    // Desplazar a la sección
+                    section.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
         
-        <!-- PÁGINA 2 - SEGUNDA PARTE DEL MENÚ -->
-        <div style="page-break-before: always; margin-top: 50px;">
-            <!-- Encabezado de la segunda página -->
-            <div class="restaurant-header">
-                <h1 class="restaurant-name">D' Fernandez</h1>
-                <div class="restaurant-subtitle">RESTAURANT</div>
-            </div>
+        // Botón volver arriba
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
             
-            <!-- SECCIÓN BEBIDAS CON ALCOHOL -->
-            <div class="menu-section">
-                <h2 class="section-title">
-                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Bebidas con Alcohol" class="section-icon">
-                    BEBIDAS CON ALCOHOL
-                </h2>
-                <table class="drinks-table">
-                    <thead>
-                        <tr>
-                            <th>BEBIDA</th>
-                            <th>DISPONIBILIDAD</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>MARGARITA (CHINOLA, FRESA, LIMÓN)</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>COMPROMETIDA</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>DAIQUIRI</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>DAIQUIRI FRESA (CHINOLA, LIMÓN)</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>DIABLO ROJO</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>PIÑA COLADA CON ALCOHOL</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>PIÑA COLADA SIN ALCOHOL</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>AMARETTO</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>AMARETTO CON LECHE</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>CAIPIRIÑA</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>SHOT DE TEQUILA</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>VODKA-CRANBERRY</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>VODKA SOUR</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>WHISKY SOUR</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>WHISKY DEWARS 12 AÑOS</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>CUBA LIBRE</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>RON SOUR</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>COPA DE VINO</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            // Activar botón de sección visible
+            const sections = document.querySelectorAll('.section');
+            const navHeight = 120;
             
-            <div class="divider"></div>
-            <!-- SECCIÓN BEBIDAS SIN ALCOHOL -->
-            <div class="menu-section">
-                <h2 class="section-title">
-                    <img src="sinalcohol.avif" class="section-icon">
-                    BEBIDAS SIN ALCOHOL
-                </h2>
-                <table class="drinks-table">
-                    <thead>
-                        <tr>
-                            <th>BEBIDA</th>
-                            <th>DISPONIBILIDAD</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>JUGOS NATURALES</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>BATIDAS: ZAPOTES/ LECHOZA Y FRESA</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>MORIR SOÑANDO</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>BOTELLA DE AGUA</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>FRUIT PUNCH</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>REFRESCOS</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>RED BULL</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>CLAMATO</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>CICLON</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>911</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>GATORADE</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - navHeight;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+                    currentSection = section.id;
+                }
+            });
             
-            <div class="divider"></div>
-             <!-- SECCIÓN CERVEZAS -->
-            <div class="menu-section">
-                <h2 class="section-title">
-                    <img src="cervezas.jpg" alt="Bebidas con Alcohol" class="section-icon">
-                    CERVEZAS
-                </h2>
-                <table class="drinks-table">
-                    <thead>
-                        <tr>
-                            <th>BEBIDA</th>
-                            <th>DISPONIBILIDAD</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>PRESIDENTE GRANDES Y PEQUEÑAS</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>MILLER</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>CORONA</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>SMIRNOFF</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>HEINEKEN GRANDE Y PEQUEÑA</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>STELLO</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                        <tr>
-                            <td>MODELO</td>
-                            <td>DISPONIBLE</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="divider"></div>
-            <!-- SECCIÓN CARNES -->
-            <div class="menu-section">
-                <h2 class="section-title">
-                    <img src="carnes.jpg" alt="Carnes" class="section-icon">
-                    CARNES
-                </h2>
-                <ul class="menu-items">
-                    <li class="menu-item">
-                        <span class="item-name">CHURRASCO CRIOLLO</span>
-                        <span class="item-price">RD$ 750.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">FILETE MIGNON</span>
-                        <span class="item-price">RD$ 940.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">FILETE DE RES A LA PARRILLA</span>
-                        <span class="item-price">RD$ 750.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">FILETE A LA PIMIENTA</span>
-                        <span class="item-price">RD$ 860.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">FILETE A LA CRIOLLA</span>
-                        <span class="item-price">RD$ 860.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">FILETE DE CERDO A LA PARRILLA</span>
-                        <span class="item-price">RD$ 680.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">CHULETA A LA CRIOLLA</span>
-                        <span class="item-price">RD$ 680.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">CHULETA A LA BBQ</span>
-                        <span class="item-price">RD$ 760.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">COSTILLA BBQ</span>
-                        <span class="item-price">RD$ 825.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">CHULETA DE CERDO A LA PARRILLA</span>
-                        <span class="item-price">RD$ 625.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">LONGANIZA FRITA</span>
-                        <span class="item-price">RD$ 550.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">CARNE SALADA</span>
-                        <span class="item-price">RD$ 590.00</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="divider"></div>
-            
-            <!-- SECCIÓN AVES -->
-            <div class="menu-section">
-                <h2 class="section-title">
-                    <img src="aves.avif" alt="Aves" class="section-icon">
-                    AVES
-                </h2>
-                <ul class="menu-items">
-                    <li class="menu-item">
-                        <span class="item-name">ALITAS BUFFALO PICANTES</span>
-                        <span class="item-price">RD$ 580.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">PECHUGA A LA PARRILLA</span>
-                        <span class="item-price">RD$ 640.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">PECHUGA A LA CRIOLLA</span>
-                        <span class="item-price">RD$ 690.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">PECHUGA A LA CORDON BLUE</span>
-                        <span class="item-price">RD$ 825.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">PECHUGA AL AJILLO</span>
-                        <span class="item-price">RD$ 690.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">PECHUGA A LA CREMA</span>
-                        <span class="item-price">RD$ 690.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">CHICHARRÓN DE POLLO</span>
-                        <span class="item-price">RD$ 495.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">CHICHARRÓN DE POLLO SIN HUESO</span>
-                        <span class="item-price">RD$ 670.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">PECHUGRINAS</span>
-                        <span class="item-price">RD$ 670.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">POLLO FRITO</span>
-                        <span class="item-price">RD$ 520.00</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="divider"></div>
-            
-            <!-- SECCIÓN ARROCES -->
-            <div class="menu-section">
-                <h2 class="section-title">
-                    <img src="arroces.jpg" alt="Arroces" class="section-icon">
-                    ARROCES
-                </h2>
-                <ul class="menu-items">
-                    <li class="menu-item">
-                        <span class="item-name">ARROZ MARINERA</span>
-                        <span class="item-price">RD$ 850.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">ARROZ CON POLLO</span>
-                        <span class="item-price">RD$ 580.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">ASOPAO DE CAMARONES</span>
-                        <span class="item-price">RD$ 860.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">ASOPAO DE POLLO</span>
-                        <span class="item-price">RD$ 595.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">CHOFAN MIXTO</span>
-                        <span class="item-price">RD$ 725.00</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="divider"></div>
-            
-            <!-- SECCIÓN ACOMPAÑAMIENTOS -->
-            <div class="menu-section">
-                <h2 class="section-title">
-                    <img src="guarniciones.jpg" alt="Acompañamientos" class="section-icon">
-                    GUARNICIONES
-                </h2>
-                <ul class="menu-items">
-                    <li class="menu-item">
-                        <span class="item-name">SERVICIO DE FRITO VERDE</span>
-                        <span class="item-price">RD$ 130.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">SERVICIO DE PAPAS FRITAS</span>
-                        <span class="item-price">RD$ 140.00</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">SERVICIO DE ARROZ</span>
-                        <span class="item-price">RD$ 120.00</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="divider"></div>
-            
-            <!-- SECCIÓN CAFÉ -->
-            <div class="menu-section">
-                <h2 class="section-title">
-                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Café" class="section-icon">
-                    CAFÉ
-                </h2>
-                <ul class="menu-items">
-                    <li class="menu-item">
-                        <span class="item-name">CAFÉ CON LECHE</span>
-                        <span class="item-price">DISPONIBLE</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">CAPPUCCINO</span>
-                        <span class="item-price">DISPONIBLE</span>
-                    </li>
-                    <li class="menu-item">
-                        <span class="item-name">CAFÉ NEGRO</span>
-                        <span class="item-price">DISPONIBLE</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- NOTA DE IMPUESTOS SEGUNDA PÁGINA -->
-            <div class="tax-note">
-                IMPUESTO INCLUIDO EN TODOS LOS PRECIOS
-            </div>
-        </div>
-    </div>
+            if (currentSection) {
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    if (btn.dataset.section === currentSection) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Activar primera sección al cargar
+        window.addEventListener('load', () => {
+            document.querySelector('.nav-btn.active').click();
+        });
+    </script>
 </body>
 </html>
+
 
 
 
