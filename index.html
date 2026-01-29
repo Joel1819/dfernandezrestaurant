@@ -68,11 +68,14 @@
             list-style: none;
         }
         
+        /* ITEM DEL MENÚ MEJORADO - FLEX PARA MÓVIL */
         .menu-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
+            align-items: center; /* Centra verticalmente */
+            padding: 12px 0;
             border-bottom: 1px dotted #ddd;
+            min-height: 45px; /* Altura mínima para consistencia */
         }
         
         .menu-item:last-child {
@@ -82,6 +85,8 @@
         .item-name {
             font-weight: bold;
             flex: 1;
+            padding-right: 15px; /* Espacio entre nombre y precio */
+            font-size: 1.05rem;
         }
         
         .item-price {
@@ -90,11 +95,8 @@
             min-width: 120px;
             text-align: right;
             font-size: 1.1rem;
-        }
-        
-        .price-currency {
-            color: #27ae60;
-            font-weight: bold;
+            white-space: nowrap; /* Evita que el precio se divida en líneas */
+            flex-shrink: 0; /* Evita que se encoja en móvil */
         }
         
         /* Tabla para bebidas */
@@ -139,28 +141,102 @@
             border: 1px solid #ddd;
         }
         
-        /* Responsive */
+        /* RESPONSIVE MEJORADO PARA MÓVILES */
         @media (max-width: 768px) {
             .menu-container {
-                padding: 20px;
+                padding: 20px 15px;
             }
             
             .restaurant-name {
                 font-size: 2.2rem;
             }
             
+            .restaurant-subtitle {
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+            
             .section-title {
                 font-size: 1.6rem;
             }
             
+            /* IMPORTANTE: MANTENER PRECIO A LA DERECHA EN MÓVIL */
             .menu-item {
-                flex-direction: column;
+                display: flex;
+                flex-direction: row; /* Mantiene horizontal en móvil */
+                align-items: center; /* Centra verticalmente */
+                padding: 10px 0;
+                min-height: 40px;
+            }
+            
+            .item-name {
+                font-size: 1rem;
+                padding-right: 10px;
+                overflow-wrap: break-word; /* Permite que nombres largos se dividan */
+                word-wrap: break-word;
+                flex: 1;
             }
             
             .item-price {
-                text-align: left;
-                margin-top: 5px;
-                min-width: auto;
+                text-align: right;
+                margin-top: 0; /* Sin margen superior */
+                min-width: 100px;
+                font-size: 1rem;
+                align-self: center; /* Mantiene alineado verticalmente */
+            }
+            
+            /* Tablas en móvil */
+            .drinks-table {
+                font-size: 0.9rem;
+            }
+            
+            .drinks-table th,
+            .drinks-table td {
+                padding: 8px 6px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .menu-container {
+                padding: 15px 12px;
+                border-radius: 5px;
+            }
+            
+            .restaurant-name {
+                font-size: 1.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .menu-item {
+                padding: 8px 0;
+            }
+            
+            .item-name {
+                font-size: 0.95rem;
+            }
+            
+            .item-price {
+                font-size: 0.95rem;
+                min-width: 90px;
+            }
+            
+            /* Para pantallas muy pequeñas, ajustar aún más */
+            @media (max-width: 350px) {
+                .item-price {
+                    min-width: 80px;
+                    font-size: 0.9rem;
+                }
+                
+                .item-name {
+                    font-size: 0.9rem;
+                }
             }
         }
         
@@ -486,75 +562,75 @@
                     <tbody>
                         <tr>
                             <td>MARGARITA (CHINOLA, FRESA, LIMÓN)</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>COMPROMETIDA</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>DAIQUIRI</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>DAIQUIRI FRESA (CHINOLA, LIMÓN)</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>DIABLO ROJO</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>PIÑA COLADA CON ALCOHOL</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>PIÑA COLADA SIN ALCOHOL</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>AMARETTO</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>AMARETTO CON LECHE</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>CAIPIRIÑA</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>SHOT DE TEQUILA</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>VODKA-CRANBERRY</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>VODKA SOUR</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>WHISKY SOUR</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>WHISKY DEWARS 12 AÑOS</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>CUBA LIBRE</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>RON SOUR</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>COPA DE VINO</td>
-                            <td>DISPONIBLE</td>
+                            <td>1</td>
                         </tr>
                     </tbody>
                 </table>
@@ -562,7 +638,7 @@
             
             <div class="divider"></div>
             
-            <!-- SECCIÓN CARNES (EN PESOS DOMINICANOS COMO EN LA IMAGEN) -->
+            <!-- SECCIÓN CARNES -->
             <div class="menu-section">
                 <h2 class="section-title">CARNES</h2>
                 <ul class="menu-items">
@@ -731,11 +807,5 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        console.log('Menú D\' Fernandez Restaurant - Todos los precios en Pesos Dominicanos (RD$)');
-        console.log('Página 1: Platos principales en RD$');
-        console.log('Página 2: Carnes, Aves, Bebidas en RD$');
-    </script>
 </body>
 </html>
