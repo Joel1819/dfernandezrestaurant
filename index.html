@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú D' Fernandez Restaurant</title>
     <style>
-        /* Estilos básicos y limpios */
         * {
             margin: 0;
             padding: 0;
@@ -34,7 +33,7 @@
             text-align: center;
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #2c3e50;
+            border-bottom: 3px solid #2c3e50;
         }
         
         .restaurant-name {
@@ -53,8 +52,7 @@
         
         /* Secciones del menú */
         .menu-section {
-            margin-bottom: 30px;
-            page-break-inside: avoid;
+            margin-bottom: 25px;
         }
         
         .section-title {
@@ -62,7 +60,7 @@
             color: #2c3e50;
             margin-bottom: 15px;
             padding-bottom: 8px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 2px solid #e74c3c;
             font-weight: bold;
         }
         
@@ -74,7 +72,7 @@
             display: flex;
             justify-content: space-between;
             padding: 10px 0;
-            border-bottom: 1px dotted #eee;
+            border-bottom: 1px dotted #ddd;
         }
         
         .menu-item:last-child {
@@ -89,8 +87,14 @@
         .item-price {
             font-weight: bold;
             color: #e74c3c;
-            min-width: 80px;
+            min-width: 120px;
             text-align: right;
+            font-size: 1.1rem;
+        }
+        
+        .price-currency {
+            color: #27ae60;
+            font-weight: bold;
         }
         
         /* Tabla para bebidas */
@@ -128,11 +132,11 @@
         .tax-note {
             text-align: center;
             margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #2c3e50;
-            font-style: italic;
-            color: #7f8c8d;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
             font-weight: bold;
+            border: 1px solid #ddd;
         }
         
         /* Responsive */
@@ -188,19 +192,19 @@
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">SOPA DE POLLO</span>
-                    <span class="item-price">1,50 €</span>
+                    <span class="item-price">RD$ 150.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">SOPA DE VEGETALES</span>
-                    <span class="item-price">1,80 €</span>
+                    <span class="item-price">RD$ 180.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">SOPA DE PESCADO</span>
-                    <span class="item-price">2,00 €</span>
+                    <span class="item-price">RD$ 200.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">SOPA DE MARISCOS</span>
-                    <span class="item-price">3,00 €</span>
+                    <span class="item-price">RD$ 300.00</span>
                 </li>
             </ul>
         </div>
@@ -213,27 +217,27 @@
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">BOLITAS DE QUESO</span>
-                    <span class="item-price">1,20 €</span>
+                    <span class="item-price">RD$ 120.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">CROQUETAS</span>
-                    <span class="item-price">1,50 €</span>
+                    <span class="item-price">RD$ 150.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">BASTONCITOS DE MERLUZA</span>
-                    <span class="item-price">1,80 €</span>
+                    <span class="item-price">RD$ 180.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">PICADERA MIXTA (4 PORCIONES)</span>
-                    <span class="item-price">2,00 €</span>
+                    <span class="item-price">RD$ 200.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">PICADERA MIXTA (6 PORCIONES)</span>
-                    <span class="item-price">2,50 €</span>
+                    <span class="item-price">RD$ 250.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">FILETE DE RES PICADO</span>
-                    <span class="item-price">3,00 €</span>
+                    <span class="item-price">RD$ 300.00</span>
                 </li>
             </ul>
         </div>
@@ -246,39 +250,39 @@
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">SALMÓN</span>
-                    <span class="item-price">1,50 €</span>
+                    <span class="item-price">RD$ 150.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">MERLUZA A LA PLANCHA</span>
-                    <span class="item-price">1,80 €</span>
+                    <span class="item-price">RD$ 180.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">MERLUZA A LA ROMANA</span>
-                    <span class="item-price">2,00 €</span>
+                    <span class="item-price">RD$ 200.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">MERLUZA AL AJILLO</span>
-                    <span class="item-price">2,50 €</span>
+                    <span class="item-price">RD$ 250.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">CAMARONES AL AJILLO</span>
-                    <span class="item-price">3,00 €</span>
+                    <span class="item-price">RD$ 300.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">CAMARONES A LA CRIOLLA</span>
-                    <span class="item-price">3,50 €</span>
+                    <span class="item-price">RD$ 350.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">LAMBÍ AL AJILLO</span>
-                    <span class="item-price">4,00 €</span>
+                    <span class="item-price">RD$ 400.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">LAMBÍ A LA CRIOLLA</span>
-                    <span class="item-price">4,50 €</span>
+                    <span class="item-price">RD$ 450.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">LAMBÍ A LA VINAGRETA</span>
-                    <span class="item-price">5,00 €</span>
+                    <span class="item-price">RD$ 500.00</span>
                 </li>
             </ul>
         </div>
@@ -291,15 +295,15 @@
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">CÉSAR CON POLLO</span>
-                    <span class="item-price">1,80 €</span>
+                    <span class="item-price">RD$ 180.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">CÉSAR CON CAMARONES</span>
-                    <span class="item-price">2,00 €</span>
+                    <span class="item-price">RD$ 200.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">CÉSAR</span>
-                    <span class="item-price">2,50 €</span>
+                    <span class="item-price">RD$ 250.00</span>
                 </li>
             </ul>
         </div>
@@ -312,47 +316,47 @@
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">ALFREDO</span>
-                    <span class="item-price">1,50 €</span>
+                    <span class="item-price">RD$ 150.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">SPAGHETTI POMODORO</span>
-                    <span class="item-price">1,80 €</span>
+                    <span class="item-price">RD$ 180.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">SPAGHETTI A LA CARBONARA</span>
-                    <span class="item-price">2,00 €</span>
+                    <span class="item-price">RD$ 200.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">SPAGHETTI A LA BOLOÑESA</span>
-                    <span class="item-price">2,50 €</span>
+                    <span class="item-price">RD$ 250.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">CON CAMARONES A LA CREMA</span>
-                    <span class="item-price">3,00 €</span>
+                    <span class="item-price">RD$ 300.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">BURRITOS: POLLO, RES, MIXTO</span>
-                    <span class="item-price">4,00 €</span>
+                    <span class="item-price">RD$ 400.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">TACOS</span>
-                    <span class="item-price">4,50 €</span>
+                    <span class="item-price">RD$ 450.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">QUESADILLA</span>
-                    <span class="item-price">5,00 €</span>
+                    <span class="item-price">RD$ 500.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">YARDA DE PAPAS PEQUEÑA</span>
-                    <span class="item-price">5,50 €</span>
+                    <span class="item-price">RD$ 550.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">YARDA DE PAPAS MEDIANA</span>
-                    <span class="item-price">6,00 €</span>
+                    <span class="item-price">RD$ 600.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">YARDA DE PAPAS GRANDE</span>
-                    <span class="item-price">7,00 €</span>
+                    <span class="item-price">RD$ 700.00</span>
                 </li>
             </ul>
         </div>
@@ -365,31 +369,31 @@
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">PIZZA DE JAMÓN Y QUESO</span>
-                    <span class="item-price">1,80 €</span>
+                    <span class="item-price">RD$ 180.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">PIZZA DE JAMÓN, QUESO Y MAÍZ</span>
-                    <span class="item-price">2,00 €</span>
+                    <span class="item-price">RD$ 200.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">PIZZA DE JAMÓN, QUESO Y PEPPERONI</span>
-                    <span class="item-price">2,50 €</span>
+                    <span class="item-price">RD$ 250.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">PIZZA DE VERDURAS</span>
-                    <span class="item-price">3,00 €</span>
+                    <span class="item-price">RD$ 300.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">PIZZA DE PIÑA</span>
-                    <span class="item-price">3,50 €</span>
+                    <span class="item-price">RD$ 350.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">PIZZA FERNÁNDEZ</span>
-                    <span class="item-price">4,00 €</span>
+                    <span class="item-price">RD$ 400.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">ADICIONALES: MAÍZ, JAMÓN Y PEPPERONI</span>
-                    <span class="item-price">5,00 €</span>
+                    <span class="item-price">RD$ 500.00</span>
                 </li>
             </ul>
         </div>
@@ -402,19 +406,19 @@
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">MOFONGO DE CAMARÓN</span>
-                    <span class="item-price">1,50 €</span>
+                    <span class="item-price">RD$ 150.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">MOFONGO DE POLLO</span>
-                    <span class="item-price">2,00 €</span>
+                    <span class="item-price">RD$ 200.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">MOFONGO DE CHICHARRÓN</span>
-                    <span class="item-price">2,50 €</span>
+                    <span class="item-price">RD$ 250.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">QUESO ADICIONAL</span>
-                    <span class="item-price">3,00 €</span>
+                    <span class="item-price">RD$ 300.00</span>
                 </li>
             </ul>
         </div>
@@ -427,38 +431,38 @@
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">JAMÓN Y QUESO</span>
-                    <span class="item-price">0,70 €</span>
+                    <span class="item-price">RD$ 70.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">PIERNA</span>
-                    <span class="item-price">0,90 €</span>
+                    <span class="item-price">RD$ 90.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">POLLO Y QUESO</span>
-                    <span class="item-price">1,00 €</span>
+                    <span class="item-price">RD$ 100.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">CLUB SANDWICH</span>
-                    <span class="item-price">1,10 €</span>
+                    <span class="item-price">RD$ 110.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">CUBANO</span>
-                    <span class="item-price">1,20 €</span>
+                    <span class="item-price">RD$ 120.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">CHEESEBURGER</span>
-                    <span class="item-price">1,30 €</span>
+                    <span class="item-price">RD$ 130.00</span>
                 </li>
                 <li class="menu-item">
                     <span class="item-name">HAMBURGER</span>
-                    <span class="item-price">1,40 €</span>
+                    <span class="item-price">RD$ 140.00</span>
                 </li>
             </ul>
         </div>
         
         <!-- NOTA DE IMPUESTOS -->
         <div class="tax-note">
-            IMPUESTO INCLUIDO
+            IMPUESTO INCLUIDO EN TODOS LOS PRECIOS
         </div>
         
         <!-- PÁGINA 2 - SEGUNDA PARTE DEL MENÚ -->
@@ -482,75 +486,75 @@
                     <tbody>
                         <tr>
                             <td>MARGARITA (CHINOLA, FRESA, LIMÓN)</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>COMPROMETIDA</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>DAIQUIRI</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>DAIQUIRI FRESA (CHINOLA, LIMÓN)</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>DIABLO ROJO</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>PIÑA COLADA CON ALCOHOL</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>PIÑA COLADA SIN ALCOHOL</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>AMARETTO</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>AMARETTO CON LECHE</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>CAIPIRIÑA</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>SHOT DE TEQUILA</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>VODKA-CRANBERRY</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>VODKA SOUR</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>WHISKY SOUR</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>WHISKY DEWARS 12 AÑOS</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>CUBA LIBRE</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>RON SOUR</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                         <tr>
                             <td>COPA DE VINO</td>
-                            <td>1</td>
+                            <td>DISPONIBLE</td>
                         </tr>
                     </tbody>
                 </table>
@@ -558,53 +562,53 @@
             
             <div class="divider"></div>
             
-            <!-- SECCIÓN CARNES -->
+            <!-- SECCIÓN CARNES (EN PESOS DOMINICANOS COMO EN LA IMAGEN) -->
             <div class="menu-section">
                 <h2 class="section-title">CARNES</h2>
                 <ul class="menu-items">
                     <li class="menu-item">
                         <span class="item-name">CHURRASCO CORROLLO</span>
-                        <span class="item-price">$750.00</span>
+                        <span class="item-price">RD$ 750.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">FILETE MIGNON</span>
-                        <span class="item-price">$840.00</span>
+                        <span class="item-price">RD$ 840.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">FILETE DE RES A LA PARRILLA</span>
-                        <span class="item-price">$750.00</span>
+                        <span class="item-price">RD$ 750.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">FILETE A LA PIMIENTA</span>
-                        <span class="item-price">$860.00</span>
+                        <span class="item-price">RD$ 860.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">FILETE A LA CRIOLLA</span>
-                        <span class="item-price">$850.00</span>
+                        <span class="item-price">RD$ 850.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CHULETA A LA CRIOLLA</span>
-                        <span class="item-price">$860.00</span>
+                        <span class="item-price">RD$ 860.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CHULETA A LA BRIGA</span>
-                        <span class="item-price">$760.00</span>
+                        <span class="item-price">RD$ 760.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">COSTILLA BBQ</span>
-                        <span class="item-price">$825.00</span>
+                        <span class="item-price">RD$ 825.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CHULETA DE CERDO A LA PARRILLA</span>
-                        <span class="item-price">$825.00</span>
+                        <span class="item-price">RD$ 825.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">LONGANIZA FRITA</span>
-                        <span class="item-price">$550.00</span>
+                        <span class="item-price">RD$ 550.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CARNE SALADA</span>
-                        <span class="item-price">$600.00</span>
+                        <span class="item-price">RD$ 600.00</span>
                     </li>
                 </ul>
             </div>
@@ -617,35 +621,35 @@
                 <ul class="menu-items">
                     <li class="menu-item">
                         <span class="item-name">ALITAS BUFFALO PICANTES</span>
-                        <span class="item-price">$88.00</span>
+                        <span class="item-price">RD$ 88.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">PECHUGA A LA PARRILLA</span>
-                        <span class="item-price">$140.00</span>
+                        <span class="item-price">RD$ 140.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">PECHUGA A LA CRIOLLA</span>
-                        <span class="item-price">$160.00</span>
+                        <span class="item-price">RD$ 160.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">PECHUGA A LA GORDON BLUE</span>
-                        <span class="item-price">$250.00</span>
+                        <span class="item-price">RD$ 250.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">PECHUGA A LA CREMA</span>
-                        <span class="item-price">$280.00</span>
+                        <span class="item-price">RD$ 280.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CHICHARRÓN DE POLLO SIN HUESO</span>
-                        <span class="item-price">$450.00</span>
+                        <span class="item-price">RD$ 450.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">PECHUGRINA</span>
-                        <span class="item-price">$570.00</span>
+                        <span class="item-price">RD$ 570.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">POLLO FRITO</span>
-                        <span class="item-price">$320.00</span>
+                        <span class="item-price">RD$ 320.00</span>
                     </li>
                 </ul>
             </div>
@@ -658,23 +662,23 @@
                 <ul class="menu-items">
                     <li class="menu-item">
                         <span class="item-name">ARROZ MARINERA</span>
-                        <span class="item-price">$50.00</span>
+                        <span class="item-price">RD$ 50.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">ARROZ CON POLLO</span>
-                        <span class="item-price">$80.00</span>
+                        <span class="item-price">RD$ 80.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">ASOPAO DE CAMARONES</span>
-                        <span class="item-price">$60.00</span>
+                        <span class="item-price">RD$ 60.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">ASOPAO DE POLLO</span>
-                        <span class="item-price">$55.00</span>
+                        <span class="item-price">RD$ 55.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CHOFAN MIXTO</span>
-                        <span class="item-price">$75.00</span>
+                        <span class="item-price">RD$ 75.00</span>
                     </li>
                 </ul>
             </div>
@@ -687,15 +691,15 @@
                 <ul class="menu-items">
                     <li class="menu-item">
                         <span class="item-name">SERVICIO DE FRITO VERDE</span>
-                        <span class="item-price">$130.00</span>
+                        <span class="item-price">RD$ 130.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">SERVICIO DE PAPAS FRITAS</span>
-                        <span class="item-price">$140.00</span>
+                        <span class="item-price">RD$ 140.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">SERVICIO DE ARROZ</span>
-                        <span class="item-price">$120.00</span>
+                        <span class="item-price">RD$ 120.00</span>
                     </li>
                 </ul>
             </div>
@@ -708,39 +712,30 @@
                 <ul class="menu-items">
                     <li class="menu-item">
                         <span class="item-name">CAFÉ CON LECHE</span>
-                        <span class="item-price">$100.00</span>
+                        <span class="item-price">RD$ 100.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CAPPUCCINO</span>
-                        <span class="item-price">$150.00</span>
+                        <span class="item-price">RD$ 150.00</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CAFÉ NEGRO</span>
-                        <span class="item-price">$200.00</span>
+                        <span class="item-price">RD$ 200.00</span>
                     </li>
                 </ul>
+            </div>
+            
+            <!-- NOTA DE IMPUESTOS SEGUNDA PÁGINA -->
+            <div class="tax-note">
+                IMPUESTO INCLUIDO EN TODOS LOS PRECIOS
             </div>
         </div>
     </div>
     
     <script>
-        // Script para facilitar la impresión
-        console.log('Menú D\' Fernandez Restaurant cargado correctamente');
-        console.log('Para imprimir: Pulse Ctrl+P');
-        
-        // Resaltar precios en Euros vs Pesos
-        document.addEventListener('DOMContentLoaded', function() {
-            const euroPrices = document.querySelectorAll('.item-price');
-            euroPrices.forEach(price => {
-                if (price.textContent.includes('€')) {
-                    price.style.color = '#2c3e50';
-                    price.style.fontWeight = 'bold';
-                } else if (price.textContent.includes('$')) {
-                    price.style.color = '#27ae60';
-                    price.style.fontWeight = 'bold';
-                }
-            });
-        });
+        console.log('Menú D\' Fernandez Restaurant - Todos los precios en Pesos Dominicanos (RD$)');
+        console.log('Página 1: Platos principales en RD$');
+        console.log('Página 2: Carnes, Aves, Bebidas en RD$');
     </script>
 </body>
 </html>
