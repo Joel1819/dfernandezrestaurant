@@ -3,26 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú D'Ennandez Restaurant</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Menú D' Fernandez Restaurant</title>
     <style>
-        :root {
-            --primary-blue: #1a73e8;
-            --dark-blue: #0d47a1;
-            --light-blue: #4285f4;
-            --accent-blue: #2962ff;
-            --soft-blue: #e8f0fe;
-            --secondary-teal: #0097a7;
-            --dark-gray: #2d3748;
-            --medium-gray: #4a5568;
-            --light-gray: #f7fafc;
-            --white: #ffffff;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 8px 30px rgba(26, 115, 232, 0.15);
-            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --border-radius: 12px;
-        }
-        
+        /* Estilos básicos y limpios */
         * {
             margin: 0;
             padding: 0;
@@ -30,844 +13,734 @@
         }
         
         body {
-            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, var(--light-gray) 0%, #edf2f7 100%);
-            color: var(--dark-gray);
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
             line-height: 1.6;
-            min-height: 100vh;
             padding: 20px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
         
-        .container {
-            max-width: 1200px;
+        .menu-container {
+            max-width: 800px;
             margin: 0 auto;
-            padding: 0 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
         }
         
-        /* Header mejorado */
-        .menu-header {
-            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 50%, var(--light-blue) 100%);
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
-            padding: 50px 40px 40px;
-            color: var(--white);
+        /* Encabezado */
+        .restaurant-header {
             text-align: center;
-            margin-bottom: 35px;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .menu-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--secondary-teal), #00bcd4);
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #2c3e50;
         }
         
         .restaurant-name {
-            font-size: 3.2rem;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            color: var(--white);
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
         
         .restaurant-subtitle {
-            font-size: 1.4rem;
-            font-weight: 400;
-            letter-spacing: 3.5px;
-            margin-bottom: 22px;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            letter-spacing: 3px;
             text-transform: uppercase;
         }
         
-        /* Navegación mejorada - ICONOS VISIBLES */
-        .category-nav {
-            display: flex;
-            overflow-x: auto;
-            gap: 12px;
-            padding: 18px 5px;
-            margin-bottom: 38px;
-            scrollbar-width: thin;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .category-nav::-webkit-scrollbar {
-            height: 6px;
-        }
-        
-        .category-nav::-webkit-scrollbar-track {
-            background: var(--soft-blue);
-            border-radius: 10px;
-        }
-        
-        .category-nav::-webkit-scrollbar-thumb {
-            background: var(--primary-blue);
-            border-radius: 10px;
-        }
-        
-        .cat-btn {
-            background: var(--white);
-            border: none;
-            padding: 14px 26px;
-            border-radius: 50px;
-            font-weight: 600;
-            color: var(--dark-blue);
-            cursor: pointer;
-            transition: var(--transition);
-            white-space: nowrap;
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-        
-        .cat-btn i {
-            font-size: 1.1rem;
-            width: 20px;
-            text-align: center;
-            color: var(--primary-blue);
-        }
-        
-        .cat-btn:hover i,
-        .cat-btn.active i {
-            color: var(--white);
-        }
-        
-        .cat-btn:hover {
-            background: var(--primary-blue);
-            color: var(--white);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .cat-btn.active {
-            background: var(--primary-blue);
-            color: var(--white);
-            box-shadow: 0 6px 20px rgba(26, 115, 232, 0.25);
-        }
-        
-        /* Grid principal - TEXTO CONTROLADO */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        /* Tarjetas con manejo de texto mejorado */
+        /* Secciones del menú */
         .menu-section {
-            background: var(--white);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(66, 133, 244, 0.1);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden; /* Previene que el texto salga */
-        }
-        
-        .menu-section:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        /* Encabezado de sección CORREGIDO */
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 26px;
-            padding-bottom: 18px;
-            border-bottom: 2px solid var(--soft-blue);
-        }
-        
-        .section-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 18px;
-            color: var(--white);
-            font-size: 1.4rem;
-            box-shadow: 0 6px 18px rgba(26, 115, 232, 0.25);
-            flex-shrink: 0;
+            margin-bottom: 30px;
+            page-break-inside: avoid;
         }
         
         .section-title {
-            font-size: 1.9rem;
-            color: var(--dark-blue);
-            font-weight: 700;
-            line-height: 1.3;
-            word-wrap: break-word; /* Evita que el texto salga */
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+            font-weight: bold;
         }
         
-        /* Items del menú - TEXTO CONTROLADO */
-        .menu-items-container {
-            flex: 1;
-            min-height: 0; /* Previene overflow */
+        .menu-items {
+            list-style: none;
         }
         
         .menu-item {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            padding: 16px 0;
-            border-bottom: 1px dashed #e2e8f0;
-            transition: var(--transition);
-            gap: 20px;
+            padding: 10px 0;
+            border-bottom: 1px dotted #eee;
         }
         
         .menu-item:last-child {
             border-bottom: none;
-            padding-bottom: 0;
-        }
-        
-        .menu-item:hover {
-            background-color: rgba(232, 240, 254, 0.4);
-            padding-left: 12px;
-            padding-right: 12px;
-            margin-left: -12px;
-            margin-right: -12px;
-            border-radius: 10px;
-        }
-        
-        .item-info {
-            flex: 1;
-            min-width: 0; /* CRÍTICO: Previene overflow */
-            overflow: hidden; /* Asegura que el texto no se salga */
         }
         
         .item-name {
-            font-weight: 600;
-            font-size: 1.15rem;
-            color: var(--dark-gray);
-            margin-bottom: 6px;
-            line-height: 1.4;
-            word-wrap: break-word;
-            overflow-wrap: break-word; /* Rompe palabras largas */
-        }
-        
-        .item-description {
-            font-size: 0.95rem;
-            color: var(--medium-gray);
-            line-height: 1.5;
-            margin-top: 4px;
-            display: none;
-        }
-        
-        .item-price-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            flex-shrink: 0;
-            min-width: 110px;
-        }
-        
-        .item-price {
-            font-weight: 800;
-            font-size: 1.35rem;
-            color: var(--primary-blue);
-            background: rgba(232, 240, 254, 0.8);
-            padding: 10px 18px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid rgba(66, 133, 244, 0.2);
-            width: 100%;
-            box-sizing: border-box;
-        }
-        
-        .currency {
-            font-size: 0.9rem;
-            font-weight: 600;
-            opacity: 0.9;
-            margin-left: 2px;
-        }
-        
-        /* Indicadores mejorados */
-        .highlight-item {
-            position: relative;
-            background: linear-gradient(90deg, rgba(232, 240, 254, 0.3), rgba(232, 240, 254, 0.1));
-            border-radius: 8px;
-            margin: 0 -5px;
-            padding: 0 5px;
-        }
-        
-        .highlight-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 70%;
-            background: var(--secondary-teal);
-            border-radius: 2px;
-        }
-        
-        .special-badge {
-            display: inline-block;
-            background: var(--secondary-teal);
-            color: white;
-            font-size: 0.75rem;
-            padding: 2px 8px;
-            border-radius: 12px;
-            margin-left: 8px;
-            vertical-align: middle;
-        }
-        
-        /* Sección especial para PASTAS (como en tu imagen) */
-        .pasta-section {
-            background: var(--white);
-            border-radius: var(--border-radius);
-            padding: 35px;
-            box-shadow: var(--shadow);
-            margin-bottom: 40px;
-            border-left: 5px solid var(--primary-blue);
-        }
-        
-        .pasta-header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid var(--soft-blue);
-        }
-        
-        .pasta-title {
-            font-size: 2.2rem;
-            color: var(--dark-blue);
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-        
-        .pasta-subtitle {
-            font-size: 1.1rem;
-            color: var(--medium-gray);
-            font-style: italic;
-        }
-        
-        .pasta-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--light-blue), transparent);
-            margin: 30px 0;
-        }
-        
-        .pasta-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .pasta-item:last-child {
-            border-bottom: none;
-        }
-        
-        .pasta-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--dark-gray);
+            font-weight: bold;
             flex: 1;
         }
         
-        .pasta-price {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-blue);
-            background: var(--soft-blue);
-            padding: 8px 20px;
-            border-radius: 8px;
-            min-width: 120px;
-            text-align: center;
+        .item-price {
+            font-weight: bold;
+            color: #e74c3c;
+            min-width: 80px;
+            text-align: right;
         }
         
-        /* Footer */
-        .menu-footer {
-            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
-            color: var(--white);
-            border-radius: var(--border-radius);
-            padding: 40px;
-            margin-top: 50px;
-            text-align: center;
-            box-shadow: var(--shadow);
+        /* Tabla para bebidas */
+        .drinks-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
         }
         
+        .drinks-table th {
+            background-color: #2c3e50;
+            color: white;
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .drinks-table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .drinks-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Separador */
+        .divider {
+            height: 2px;
+            background-color: #eee;
+            margin: 25px 0;
+        }
+        
+        /* Nota de impuestos */
         .tax-note {
-            background: rgba(0, 151, 167, 0.2);
-            padding: 18px 25px;
-            border-radius: 10px;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            margin: 22px 0;
-            border: 1px solid rgba(0, 151, 167, 0.3);
-            font-weight: 500;
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #2c3e50;
+            font-style: italic;
+            color: #7f8c8d;
+            font-weight: bold;
         }
         
-        /* Responsive mejorado */
-        @media (max-width: 992px) {
-            .menu-grid {
-                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            }
-            
-            .section-title {
-                font-size: 1.7rem;
-            }
-        }
-        
+        /* Responsive */
         @media (max-width: 768px) {
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .restaurant-name {
-                font-size: 2.5rem;
-            }
-            
-            .section-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-            
-            .cat-btn {
-                padding: 12px 20px;
-                font-size: 0.95rem;
-            }
-            
-            .cat-btn i {
-                font-size: 1rem;
-            }
-            
-            .pasta-section {
-                padding: 25px;
-            }
-            
-            .pasta-title {
-                font-size: 1.8rem;
-            }
-            
-            .menu-item,
-            .pasta-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            
-            .item-price-container,
-            .pasta-price {
-                align-self: flex-end;
-                margin-top: 5px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 10px;
-            }
-            
-            .menu-header {
-                padding: 40px 20px 30px;
+            .menu-container {
+                padding: 20px;
             }
             
             .restaurant-name {
                 font-size: 2.2rem;
             }
             
-            .menu-section,
-            .pasta-section {
-                padding: 20px;
-            }
-            
             .section-title {
                 font-size: 1.6rem;
             }
             
-            .pasta-title {
-                font-size: 1.6rem;
+            .menu-item {
+                flex-direction: column;
             }
             
-            .item-name,
-            .pasta-name {
-                font-size: 1.1rem;
+            .item-price {
+                text-align: left;
+                margin-top: 5px;
+                min-width: auto;
+            }
+        }
+        
+        /* Para impresión */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
             }
             
-            .item-price,
-            .pasta-price {
-                font-size: 1.2rem;
-                min-width: 100px;
+            .menu-container {
+                box-shadow: none;
+                padding: 15px;
             }
-        }
-        
-        /* Animaciones */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .menu-section,
-        .pasta-section {
-            animation: fadeIn 0.5s ease forwards;
-        }
-        
-        /* Scroll suave */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Mejora para iconos que no cargan */
-        .fas, .fab {
-            font-family: 'Font Awesome 6 Free' !important;
-        }
-        
-        /* Clase especial para cuando FontAwesome no carga */
-        .fa-backup::before {
-            content: "•";
-            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="menu-header">
-            <h1 class="restaurant-name">D'ENNANDEZ</h1>
-            <div class="restaurant-subtitle">RESTAURANT & BAR</div>
-        </header>
-        
-        <!-- Navegación con iconos visibles -->
-        <nav class="category-nav" aria-label="Categorías del menú">
-            <button class="cat-btn active" data-category="sopas">
-                <i class="fas fa-utensil-spoon"></i>
-                <span>Sopas</span>
-            </button>
-            <button class="cat-btn" data-category="entradas">
-                <i class="fas fa-cheese"></i>
-                <span>Entradas</span>
-            </button>
-            <button class="cat-btn" data-category="mariscos">
-                <i class="fas fa-fish"></i>
-                <span>Pescados</span>
-            </button>
-            <button class="cat-btn" data-category="carnes">
-                <i class="fas fa-drumstick-bite"></i>
-                <span>Carnes</span>
-            </button>
-            <button class="cat-btn" data-category="pastas">
-                <i class="fas fa-pasta"></i>
-                <span>Pastas</span>
-            </button>
-            <button class="cat-btn" data-category="pizzas">
-                <i class="fas fa-pizza-slice"></i>
-                <span>Pizzas</span>
-            </button>
-            <button class="cat-btn" data-category="especiales">
-                <i class="fas fa-crown"></i>
-                <span>Especiales</span>
-            </button>
-            <button class="cat-btn" data-category="bebidas">
-                <i class="fas fa-glass-cheers"></i>
-                <span>Bebidas</span>
-            </button>
-        </nav>
-        
-        <!-- Sección de PASTAS estilo imagen -->
-        <section class="pasta-section" id="pastas">
-            <div class="pasta-header">
-                <h2 class="pasta-title">PASTAS & PLATOS INTERNACIONALES</h2>
-                <p class="pasta-subtitle">Sabores del mundo en cada plato</p>
-            </div>
-            
-            <div class="pasta-divider"></div>
-            
-            <div class="pasta-item highlight-item">
-                <div class="pasta-name">Alfredo</div>
-                <div class="pasta-price">1,50 €</div>
-            </div>
-            
-            <div class="pasta-item">
-                <div class="pasta-name">Spaghetti Pomodoro</div>
-                <div class="pasta-price">1,80 €</div>
-            </div>
-            
-            <div class="pasta-item">
-                <div class="pasta-name">Spaghetti Carbonara</div>
-                <div class="pasta-price">2,00 €</div>
-            </div>
-            
-            <div class="pasta-item">
-                <div class="pasta-name">Burritos Mixtos</div>
-                <div class="pasta-price">4,00 €</div>
-            </div>
-            
-            <div class="pasta-item">
-                <div class="pasta-name">Tacos Mexicanos</div>
-                <div class="pasta-price">4,50 €</div>
-            </div>
-            
-            <div class="pasta-item">
-                <div class="pasta-name">Quesadilla</div>
-                <div class="pasta-price">5,00 €</div>
-            </div>
-        </section>
-        
-        <!-- Grid con otras secciones -->
-        <div class="menu-grid">
-            <!-- Sección SOPAS -->
-            <section class="menu-section" id="sopas">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-utensil-spoon"></i>
-                    </div>
-                    <h2 class="section-title">SOPAS & CREMAS</h2>
-                </div>
-                
-                <div class="menu-items-container">
-                    <div class="menu-item highlight-item">
-                        <div class="item-info">
-                            <div class="item-name">Sopa de Pollo</div>
-                            <div class="item-description">Caldo de pollo con fideos y vegetales frescos</div>
-                        </div>
-                        <div class="item-price-container">
-                            <div class="item-price">1,50 <span class="currency">€</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <div class="item-name">Sopa de Vegetales</div>
-                            <div class="item-description">Variedad de vegetales de temporada en caldo ligero</div>
-                        </div>
-                        <div class="item-price-container">
-                            <div class="item-price">1,80 <span class="currency">€</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <div class="item-name">Sopa de Pescado</div>
-                            <div class="item-description">Pescado fresco con verduras y hierbas aromáticas</div>
-                        </div>
-                        <div class="item-price-container">
-                            <div class="item-price">2,00 <span class="currency">€</span></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Sección PESCADOS -->
-            <section class="menu-section" id="mariscos">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-fish"></i>
-                    </div>
-                    <h2 class="section-title">PESCADOS & MARISCOS</h2>
-                </div>
-                
-                <div class="menu-items-container">
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <div class="item-name">Salmón a la Plancha</div>
-                        </div>
-                        <div class="item-price-container">
-                            <div class="item-price">1,50 <span class="currency">€</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item highlight-item">
-                        <div class="item-info">
-                            <div class="item-name">Camarones al Ajillo</div>
-                        </div>
-                        <div class="item-price-container">
-                            <div class="item-price">3,00 <span class="currency">€</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <div class="item-name">Lambí a la Criolla</div>
-                        </div>
-                        <div class="item-price-container">
-                            <div class="item-price">4,50 <span class="currency">€</span></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Sección PIZZAS -->
-            <section class="menu-section" id="pizzas">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-pizza-slice"></i>
-                    </div>
-                    <h2 class="section-title">PIZZAS ARTESANALES</h2>
-                </div>
-                
-                <div class="menu-items-container">
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <div class="item-name">Jamón y Queso</div>
-                        </div>
-                        <div class="item-price-container">
-                            <div class="item-price">1,80 <span class="currency">€</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <div class="item-name">Jamón, Queso y Maíz</div>
-                        </div>
-                        <div class="item-price-container">
-                            <div class="item-price">2,00 <span class="currency">€</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="menu-item highlight-item">
-                        <div class="item-info">
-                            <div class="item-name">Pizza de Verduras</div>
-                        </div>
-                        <div class="item-price-container">
-                            <div class="item-price">3,00 <span class="currency">€</span></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <div class="menu-container">
+        <!-- Encabezado -->
+        <div class="restaurant-header">
+            <h1 class="restaurant-name">D' Fernandez</h1>
+            <div class="restaurant-subtitle">RESTAURANT</div>
         </div>
         
-        <!-- Footer -->
-        <footer class="menu-footer">
-            <div class="tax-note">
-                <i class="fas fa-info-circle"></i>
-                <span>TODOS LOS PRECIOS INCLUYEN IMPUESTOS</span>
+        <!-- SECCIÓN SOPA -->
+        <div class="menu-section">
+            <h2 class="section-title">SOPA</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <span class="item-name">SOPA DE POLLO</span>
+                    <span class="item-price">1,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">SOPA DE VEGETALES</span>
+                    <span class="item-price">1,80 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">SOPA DE PESCADO</span>
+                    <span class="item-price">2,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">SOPA DE MARISCOS</span>
+                    <span class="item-price">3,00 €</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- SECCIÓN PICADERAS -->
+        <div class="menu-section">
+            <h2 class="section-title">PICADERAS</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <span class="item-name">BOLITAS DE QUESO</span>
+                    <span class="item-price">1,20 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">CROQUETAS</span>
+                    <span class="item-price">1,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">BASTONCITOS DE MERLUZA</span>
+                    <span class="item-price">1,80 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">PICADERA MIXTA (4 PORCIONES)</span>
+                    <span class="item-price">2,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">PICADERA MIXTA (6 PORCIONES)</span>
+                    <span class="item-price">2,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">FILETE DE RES PICADO</span>
+                    <span class="item-price">3,00 €</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- SECCIÓN PESCADOS Y MARISCOS -->
+        <div class="menu-section">
+            <h2 class="section-title">PESCADOS Y MARISCOS</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <span class="item-name">SALMÓN</span>
+                    <span class="item-price">1,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">MERLUZA A LA PLANCHA</span>
+                    <span class="item-price">1,80 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">MERLUZA A LA ROMANA</span>
+                    <span class="item-price">2,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">MERLUZA AL AJILLO</span>
+                    <span class="item-price">2,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">CAMARONES AL AJILLO</span>
+                    <span class="item-price">3,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">CAMARONES A LA CRIOLLA</span>
+                    <span class="item-price">3,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">LAMBÍ AL AJILLO</span>
+                    <span class="item-price">4,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">LAMBÍ A LA CRIOLLA</span>
+                    <span class="item-price">4,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">LAMBÍ A LA VINAGRETA</span>
+                    <span class="item-price">5,00 €</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- SECCIÓN ENSALADAS -->
+        <div class="menu-section">
+            <h2 class="section-title">ENSALADAS</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <span class="item-name">CÉSAR CON POLLO</span>
+                    <span class="item-price">1,80 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">CÉSAR CON CAMARONES</span>
+                    <span class="item-price">2,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">CÉSAR</span>
+                    <span class="item-price">2,50 €</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- SECCIÓN PASTAS -->
+        <div class="menu-section">
+            <h2 class="section-title">PASTAS</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <span class="item-name">ALFREDO</span>
+                    <span class="item-price">1,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">SPAGHETTI POMODORO</span>
+                    <span class="item-price">1,80 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">SPAGHETTI A LA CARBONARA</span>
+                    <span class="item-price">2,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">SPAGHETTI A LA BOLOÑESA</span>
+                    <span class="item-price">2,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">CON CAMARONES A LA CREMA</span>
+                    <span class="item-price">3,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">BURRITOS: POLLO, RES, MIXTO</span>
+                    <span class="item-price">4,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">TACOS</span>
+                    <span class="item-price">4,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">QUESADILLA</span>
+                    <span class="item-price">5,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">YARDA DE PAPAS PEQUEÑA</span>
+                    <span class="item-price">5,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">YARDA DE PAPAS MEDIANA</span>
+                    <span class="item-price">6,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">YARDA DE PAPAS GRANDE</span>
+                    <span class="item-price">7,00 €</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- SECCIÓN PIZZA -->
+        <div class="menu-section">
+            <h2 class="section-title">PIZZA</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <span class="item-name">PIZZA DE JAMÓN Y QUESO</span>
+                    <span class="item-price">1,80 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">PIZZA DE JAMÓN, QUESO Y MAÍZ</span>
+                    <span class="item-price">2,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">PIZZA DE JAMÓN, QUESO Y PEPPERONI</span>
+                    <span class="item-price">2,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">PIZZA DE VERDURAS</span>
+                    <span class="item-price">3,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">PIZZA DE PIÑA</span>
+                    <span class="item-price">3,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">PIZZA FERNÁNDEZ</span>
+                    <span class="item-price">4,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">ADICIONALES: MAÍZ, JAMÓN Y PEPPERONI</span>
+                    <span class="item-price">5,00 €</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- SECCIÓN MOFONGOS -->
+        <div class="menu-section">
+            <h2 class="section-title">MOFONGOS</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <span class="item-name">MOFONGO DE CAMARÓN</span>
+                    <span class="item-price">1,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">MOFONGO DE POLLO</span>
+                    <span class="item-price">2,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">MOFONGO DE CHICHARRÓN</span>
+                    <span class="item-price">2,50 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">QUESO ADICIONAL</span>
+                    <span class="item-price">3,00 €</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- SECCIÓN SANDWICH -->
+        <div class="menu-section">
+            <h2 class="section-title">SANDWICH</h2>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <span class="item-name">JAMÓN Y QUESO</span>
+                    <span class="item-price">0,70 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">PIERNA</span>
+                    <span class="item-price">0,90 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">POLLO Y QUESO</span>
+                    <span class="item-price">1,00 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">CLUB SANDWICH</span>
+                    <span class="item-price">1,10 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">CUBANO</span>
+                    <span class="item-price">1,20 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">CHEESEBURGER</span>
+                    <span class="item-price">1,30 €</span>
+                </li>
+                <li class="menu-item">
+                    <span class="item-name">HAMBURGER</span>
+                    <span class="item-price">1,40 €</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- NOTA DE IMPUESTOS -->
+        <div class="tax-note">
+            IMPUESTO INCLUIDO
+        </div>
+        
+        <!-- PÁGINA 2 - SEGUNDA PARTE DEL MENÚ -->
+        <div style="page-break-before: always; margin-top: 50px;">
+            <!-- Encabezado de la segunda página -->
+            <div class="restaurant-header">
+                <h1 class="restaurant-name">D' Fernandez</h1>
+                <div class="restaurant-subtitle">RESTAURANT</div>
             </div>
             
-            <p style="margin-top: 20px; font-size: 0.95rem; opacity: 0.85;">
-                Menú sujeto a cambios según disponibilidad | D'Ennandez Restaurant & Bar
-            </p>
-        </footer>
+            <!-- SECCIÓN BEBIDAS CON ALCOHOL -->
+            <div class="menu-section">
+                <h2 class="section-title">BEBIDAS CON ALCOHOL</h2>
+                <table class="drinks-table">
+                    <thead>
+                        <tr>
+                            <th>BEBIDA</th>
+                            <th>CANTIDAD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MARGARITA (CHINOLA, FRESA, LIMÓN)</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>COMPROMETIDA</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>DAIQUIRI</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>DAIQUIRI FRESA (CHINOLA, LIMÓN)</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>DIABLO ROJO</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PIÑA COLADA CON ALCOHOL</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PIÑA COLADA SIN ALCOHOL</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>AMARETTO</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>AMARETTO CON LECHE</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>CAIPIRIÑA</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>SHOT DE TEQUILA</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>VODKA-CRANBERRY</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>VODKA SOUR</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>WHISKY SOUR</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>WHISKY DEWARS 12 AÑOS</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>CUBA LIBRE</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>RON SOUR</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>COPA DE VINO</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <!-- SECCIÓN CARNES -->
+            <div class="menu-section">
+                <h2 class="section-title">CARNES</h2>
+                <ul class="menu-items">
+                    <li class="menu-item">
+                        <span class="item-name">CHURRASCO CORROLLO</span>
+                        <span class="item-price">$750.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">FILETE MIGNON</span>
+                        <span class="item-price">$840.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">FILETE DE RES A LA PARRILLA</span>
+                        <span class="item-price">$750.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">FILETE A LA PIMIENTA</span>
+                        <span class="item-price">$860.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">FILETE A LA CRIOLLA</span>
+                        <span class="item-price">$850.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">CHULETA A LA CRIOLLA</span>
+                        <span class="item-price">$860.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">CHULETA A LA BRIGA</span>
+                        <span class="item-price">$760.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">COSTILLA BBQ</span>
+                        <span class="item-price">$825.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">CHULETA DE CERDO A LA PARRILLA</span>
+                        <span class="item-price">$825.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">LONGANIZA FRITA</span>
+                        <span class="item-price">$550.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">CARNE SALADA</span>
+                        <span class="item-price">$600.00</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <!-- SECCIÓN AVES -->
+            <div class="menu-section">
+                <h2 class="section-title">AVES</h2>
+                <ul class="menu-items">
+                    <li class="menu-item">
+                        <span class="item-name">ALITAS BUFFALO PICANTES</span>
+                        <span class="item-price">$88.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">PECHUGA A LA PARRILLA</span>
+                        <span class="item-price">$140.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">PECHUGA A LA CRIOLLA</span>
+                        <span class="item-price">$160.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">PECHUGA A LA GORDON BLUE</span>
+                        <span class="item-price">$250.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">PECHUGA A LA CREMA</span>
+                        <span class="item-price">$280.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">CHICHARRÓN DE POLLO SIN HUESO</span>
+                        <span class="item-price">$450.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">PECHUGRINA</span>
+                        <span class="item-price">$570.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">POLLO FRITO</span>
+                        <span class="item-price">$320.00</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <!-- SECCIÓN ARROCES -->
+            <div class="menu-section">
+                <h2 class="section-title">ARROCES</h2>
+                <ul class="menu-items">
+                    <li class="menu-item">
+                        <span class="item-name">ARROZ MARINERA</span>
+                        <span class="item-price">$50.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">ARROZ CON POLLO</span>
+                        <span class="item-price">$80.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">ASOPAO DE CAMARONES</span>
+                        <span class="item-price">$60.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">ASOPAO DE POLLO</span>
+                        <span class="item-price">$55.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">CHOFAN MIXTO</span>
+                        <span class="item-price">$75.00</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <!-- SECCIÓN ACOMPAÑAMIENTOS -->
+            <div class="menu-section">
+                <h2 class="section-title">ACOMPAÑAMIENTOS</h2>
+                <ul class="menu-items">
+                    <li class="menu-item">
+                        <span class="item-name">SERVICIO DE FRITO VERDE</span>
+                        <span class="item-price">$130.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">SERVICIO DE PAPAS FRITAS</span>
+                        <span class="item-price">$140.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">SERVICIO DE ARROZ</span>
+                        <span class="item-price">$120.00</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <!-- SECCIÓN CAFÉ -->
+            <div class="menu-section">
+                <h2 class="section-title">CAFÉ</h2>
+                <ul class="menu-items">
+                    <li class="menu-item">
+                        <span class="item-name">CAFÉ CON LECHE</span>
+                        <span class="item-price">$100.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">CAPPUCCINO</span>
+                        <span class="item-price">$150.00</span>
+                    </li>
+                    <li class="menu-item">
+                        <span class="item-name">CAFÉ NEGRO</span>
+                        <span class="item-price">$200.00</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
     
     <script>
-        // Solución para iconos que no se ven
-        document.addEventListener('DOMContentLoaded', function() {
-            // Verificar si FontAwesome se cargó correctamente
-            const testIcon = document.createElement('i');
-            testIcon.className = 'fas fa-check';
-            document.body.appendChild(testIcon);
-            
-            setTimeout(() => {
-                const computedStyle = window.getComputedStyle(testIcon);
-                const fontFamily = computedStyle.fontFamily;
-                
-                if (!fontFamily.includes('Font Awesome')) {
-                    // FontAwesome no se cargó, usar iconos de respaldo
-                    console.log('FontAwesome no cargó, usando respaldo');
-                    
-                    // Reemplazar iconos por texto o símbolos
-                    document.querySelectorAll('.fas, .fab').forEach(icon => {
-                        const iconClass = Array.from(icon.classList).find(cls => cls.startsWith('fa-'));
-                        if (iconClass) {
-                            const iconName = iconClass.replace('fa-', '');
-                            let backupChar = '•';
-                            
-                            // Mapear iconos comunes a caracteres
-                            const iconMap = {
-                                'utensil-spoon': '🥄',
-                                'cheese': '🧀',
-                                'fish': '🐟',
-                                'drumstick-bite': '🍗',
-                                'pasta': '🍝',
-                                'pizza-slice': '🍕',
-                                'crown': '👑',
-                                'glass-cheers': '🥂',
-                                'info-circle': 'ℹ️'
-                            };
-                            
-                            backupChar = iconMap[iconName] || '•';
-                            icon.innerHTML = backupChar;
-                            icon.classList.add('fa-backup');
-                        }
-                    });
-                }
-                
-                document.body.removeChild(testIcon);
-            }, 1000);
-            
-            // Navegación por categorías
-            const categoryButtons = document.querySelectorAll('.cat-btn');
-            
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remover clase active de todos
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Agregar al clickeado
-                    this.classList.add('active');
-                    
-                    // Obtener categoría y hacer scroll
-                    const category = this.getAttribute('data-category');
-                    const targetSection = document.getElementById(category);
-                    
-                    if (targetSection) {
-                        const headerOffset = 100;
-                        const elementPosition = targetSection.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                        
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Mostrar descripciones al hover
-            const menuItems = document.querySelectorAll('.menu-item');
-            menuItems.forEach(item => {
-                const description = item.querySelector('.item-description');
-                if (description) {
-                    item.addEventListener('mouseenter', () => {
-                        description.style.display = 'block';
-                    });
-                    
-                    item.addEventListener('mouseleave', () => {
-                        description.style.display = 'none';
-                    });
-                }
-            });
-            
-            console.log('✅ Menú cargado correctamente');
-            console.log('✅ Iconos verificados y corregidos si era necesario');
-            console.log('✅ Texto controlado para evitar desbordamientos');
-        });
+        // Script para facilitar la impresión
+        console.log('Menú D\' Fernandez Restaurant cargado correctamente');
+        console.log('Para imprimir: Pulse Ctrl+P');
         
-        // Fallback adicional para FontAwesome
-        if (!window.FontAwesome) {
-            console.warn('FontAwesome no disponible, cargando desde CDN de respaldo');
-            const faScript = document.createElement('script');
-            faScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';
-            faScript.crossOrigin = 'anonymous';
-            document.head.appendChild(faScript);
-        }
+        // Resaltar precios en Euros vs Pesos
+        document.addEventListener('DOMContentLoaded', function() {
+            const euroPrices = document.querySelectorAll('.item-price');
+            euroPrices.forEach(price => {
+                if (price.textContent.includes('€')) {
+                    price.style.color = '#2c3e50';
+                    price.style.fontWeight = 'bold';
+                } else if (price.textContent.includes('$')) {
+                    price.style.color = '#27ae60';
+                    price.style.fontWeight = 'bold';
+                }
+            });
+        });
     </script>
 </body>
 </html>
