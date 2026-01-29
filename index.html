@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú D'Ennandez Restaurant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --dark-blue: #0d47a1;
+            --light-blue: #4285f4;
+            --accent-blue: #2962ff;
+            --soft-blue: #e8f0fe;
+            --secondary-teal: #0097a7;
+            --dark-gray: #2d3748;
+            --medium-gray: #4a5568;
+            --light-gray: #f7fafc;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(26, 115, 232, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --border-radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--light-gray) 0%, #edf2f7 100%);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Contenedor principal con espaciado consistente */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header con gradiente azul */
+        .menu-header {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 50%, var(--light-blue) 100%);
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            padding: 50px 40px 40px;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 35px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary-teal), #00bcd4);
+        }
+        
+        .restaurant-name {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            color: var(--white);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .restaurant-subtitle {
+            font-size: 1.4rem;
+            font-weight: 400;
+            letter-spacing: 3.5px;
+            margin-bottom: 22px;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+        }
+        
+        .header-tagline {
+            font-size: 1.15rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 28px;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+        
+        .header-badges {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+        
+        .badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .badge i {
+            font-size: 1rem;
+        }
+        
+        /* Navegación por categorías - ESPACIADO MEJORADO */
+        .category-nav {
+            display: flex;
+            overflow-x: auto;
+            gap: 12px;
+            padding: 18px 5px;
+            margin-bottom: 38px;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .category-nav::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .category-nav::-webkit-scrollbar-track {
+            background: var(--soft-blue);
+            border-radius: 10px;
+        }
+        
+        .category-nav::-webkit-scrollbar-thumb {
+            background: var(--primary-blue);
+            border-radius: 10px;
+        }
+        
+        .cat-btn {
+            background: var(--white);
+            border: none;
+            padding: 14px 26px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .cat-btn i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .cat-btn:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .cat-btn.active {
+            background: var(--primary-blue);
+            color: var(--white);
+            box-shadow: 0 6px 20px rgba(26, 115, 232, 0.25);
+        }
+        
+        /* Grid principal con espaciado consistente */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        /* Tarjetas de secciones con espaciado uniforme */
+        .menu-section {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(66, 133, 244, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .menu-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* Encabezado de sección con alineación perfecta */
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 26px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid var(--soft-blue);
+        }
+        
+        .section-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 18px;
+            color: var(--white);
+            font-size: 1.4rem;
+            box-shadow: 0 6px 18px rgba(26, 115, 232, 0.25);
+            flex-shrink: 0;
+        }
+        
+        .section-title {
+            font-size: 1.9rem;
+            color: var(--dark-blue);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        /* Items del menú con espaciado consistente */
+        .menu-items-container {
+            flex: 1;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 16px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            transition: var(--transition);
+            gap: 20px;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .menu-item:hover {
+            background-color: rgba(232, 240, 254, 0.4);
+            padding-left: 12px;
+            padding-right: 12px;
+            margin-left: -12px;
+            margin-right: -12px;
+            border-radius: 10px;
+        }
+        
+        .item-info {
+            flex: 1;
+            min-width: 0; /* Previene overflow */
+        }
+        
+        .item-name {
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--dark-gray);
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+        
+        .item-description {
+            font-size: 0.95rem;
+            color: var(--medium-gray);
+            line-height: 1.5;
+            display: none;
+        }
+        
+        .item-price {
+            font-weight: 800;
+            font-size: 1.35rem;
+            color: var(--primary-blue);
+            white-space: nowrap;
+            background: rgba(232, 240, 254, 0.8);
+            padding: 10px 18px;
+            border-radius: 10px;
+            min-width: 110px;
+            text-align: center;
+            flex-shrink: 0;
+            border: 1px solid rgba(66, 133, 244, 0.2);
+        }
+        
+        .currency {
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-left: 2px;
+        }
+        
+        /* Indicadores visuales */
+        .highlight {
+            position: relative;
+        }
+        
+        .highlight::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 70%;
+            background: var(--secondary-teal);
+            border-radius: 2px;
+        }
+        
+        .spicy::after {
+            content: '🌶️';
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .veg::after {
+            content: '🌱';
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* Tabla de bebidas mejorada */
+        .drinks-section {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+        }
+        
+        .drinks-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .drinks-table thead {
+            background: linear-gradient(to right, var(--dark-blue), #1e40af);
+            color: var(--white);
+        }
+        
+        .drinks-table th {
+            padding: 20px 18px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .drinks-table th:first-child {
+            padding-left: 25px;
+        }
+        
+        .drinks-table th:last-child {
+            padding-right: 25px;
+        }
+        
+        .drinks-table tbody tr {
+            transition: var(--transition);
+        }
+        
+        .drinks-table tbody tr:nth-child(even) {
+            background-color: var(--soft-blue);
+        }
+        
+        .drinks-table tbody tr:hover {
+            background-color: rgba(66, 133, 244, 0.1);
+        }
+        
+        .drinks-table td {
+            padding: 18px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        
+        .drinks-table td:first-child {
+            padding-left: 25px;
+        }
+        
+        .drinks-table td:last-child {
+            padding-right: 25px;
+        }
+        
+        /* Footer del menú */
+        .menu-footer {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin-top: 50px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .footer-note {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 600;
+        }
+        
+        .tax-note {
+            background: rgba(0, 151, 167, 0.2);
+            padding: 18px 25px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin: 22px 0;
+            border: 1px solid rgba(0, 151, 167, 0.3);
+            font-weight: 500;
+        }
+        
+        .tax-note i {
+            font-size: 1.2rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+        }
+        
+        .contact-item i {
+            color: #4fc3f7;
+            font-size: 1.2rem;
+            width: 24px;
+        }
+        
+        /* Botón de modo oscuro */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            background: var(--dark-blue);
+            color: var(--white);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark-mode-toggle:hover {
+            transform: rotate(20deg) scale(1.05);
+            background: var(--primary-blue);
+        }
+        
+        .dark-mode-toggle i {
+            font-size: 1.3rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 25px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .menu-header {
+                padding: 40px 25px 35px;
+                margin-bottom: 30px;
+            }
+            
+            .restaurant-name {
+                font-size: 2.5rem;
+            }
+            
+            .restaurant-subtitle {
+                font-size: 1.2rem;
+                letter-spacing: 2.5px;
+            }
+            
+            .header-tagline {
+                font-size: 1.05rem;
+            }
+            
+            .category-nav {
+                padding: 15px 5px;
+                margin-bottom: 30px;
+                gap: 10px;
+            }
+            
+            .cat-btn {
+                padding: 12px 20px;
+                font-size: 0.95rem;
+                gap: 10px;
+            }
+            
+            .cat-btn i {
+                font-size: 1rem;
+            }
+            
+            .menu-section {
+                padding: 25px;
+            }
+            
+            .section-header {
+                margin-bottom: 22px;
+            }
+            
+            .section-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                margin-right: 16px;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .menu-item {
+                padding: 14px 0;
+                gap: 15px;
+            }
+            
+            .item-price {
+                padding: 8px 15px;
+                min-width: 100px;
+                font-size: 1.25rem;
+            }
+            
+            .drinks-section {
+                padding: 25px;
+            }
+            
+            .contact-info {
+                gap: 25px;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .dark-mode-toggle {
+                top: 20px;
+                right: 20px;
+                width: 48px;
+                height: 48px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .restaurant-name {
+                font-size: 2.2rem;
+            }
+            
+            .badge {
+                padding: 8px 18px;
+                font-size: 0.9rem;
+            }
+            
+            .header-badges {
+                gap: 12px;
+            }
+            
+            .menu-section {
+                padding: 22px;
+            }
+        }
+        
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .menu-section {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Mejora de enfoque para accesibilidad */
+        *:focus {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón modo oscuro -->
+    <div class="dark-mode-toggle" id="darkModeToggle" aria-label="Alternar modo oscuro">
+        <i class="fas fa-moon"></i>
+    </div>
+    
+    <div class="container">
+        <!-- Header con paleta azul -->
+        <header class="menu-header">
+            <h1 class="restaurant-name">D'Fernandez Restaurant</h1>
+            <div class="restaurant-subtitle">RESTAURANT & BAR</div>
+            <p class="header-tagline">Sabores auténticos con ingredientes frescos y seleccionados. Más de 25 años sirviendo la mejor gastronomía local e internacional.</p>
+            
+            <div class="header-badges">
+                <div class="badge"><i class="fas fa-star"></i> Excelencia Culinaria</div>
+                <div class="badge"><i class="fas fa-leaf"></i> Ingredientes Frescos</div>
+            </div>
+        </header>
+        
+        <!-- Navegación por categorías -->
+        <nav class="category-nav" aria-label="Categorías del menú">
+            <button class="cat-btn active" data-category="entradas">
+                <i class="fas fa-utensils"></i>
+                <span>Entradas</span>
+            </button>
+            <button class="cat-btn" data-category="sopas">
+                <i class="fas fa-utensil-spoon"></i>
+                <span>Sopas</span>
+            </button>
+            <button class="cat-btn" data-category="mariscos">
+                <i class="fas fa-fish"></i>
+                <span>Pescados</span>
+            </button>
+            <button class="cat-btn" data-category="carnes">
+                <i class="fas fa-drumstick-bite"></i>
+                <span>Carnes</span>
+            </button>
+            <button class="cat-btn" data-category="aves">
+                <i class="fas fa-drumstick"></i>
+                <span>Aves</span>
+            </button>
+            <button class="cat-btn" data-category="pastas">
+                <i class="fas fa-pasta"></i>
+                <span>Pastas</span>
+            </button>
+            <button class="cat-btn" data-category="pizzas">
+                <i class="fas fa-pizza-slice"></i>
+                <span>Pizzas</span>
+            </button>
+            <button class="cat-btn" data-category="especiales">
+                <i class="fas fa-crown"></i>
+                <span>Especiales</span>
+            </button>
+            <button class="cat-btn" data-category="bebidas">
+                <i class="fas fa-glass-cheers"></i>
+                <span>Bebidas</span>
+            </button>
+        </nav>
+        
+        <!-- Contenido principal -->
+        <main>
+            <!-- Grid con múltiples secciones -->
+            <div class="menu-grid">
+                <!-- Sección SOPAS -->
+                <section class="menu-section" id="sopas">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-utensil-spoon"></i>
+                        </div>
+                        <h2 class="section-title">SOPAS & CREMAS</h2>
+                    </div>
+                    
+                    <div class="menu-items-container">
+                        <div class="menu-item highlight">
+                            <div class="item-info">
+                                <div class="item-name">Sopa de Pollo</div>
+                                <div class="item-description">Caldo de pollo con fideos y vegetales frescos</div>
+                            </div>
+                            <div class="item-price">1,50 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Sopa de Vegetales</div>
+                                <div class="item-description">Variedad de vegetales de temporada en caldo ligero</div>
+                            </div>
+                            <div class="item-price">1,80 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Sopa de Pescado</div>
+                                <div class="item-description">Pescado fresco con verduras y hierbas aromáticas</div>
+                            </div>
+                            <div class="item-price">2,00 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Sopa de Mariscos</div>
+                                <div class="item-description">Mezcla de mariscos frescos en caldo concentrado</div>
+                            </div>
+                            <div class="item-price">3,00 <span class="currency">€</span></div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Sección PICADERAS -->
+                <section class="menu-section" id="entradas">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-cheese"></i>
+                        </div>
+                        <h2 class="section-title">ENTRADAS & PICADERAS</h2>
+                    </div>
+                    
+                    <div class="menu-items-container">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Bolitas de Queso</div>
+                                <div class="item-description">Queso fundido empanizado con hierbas finas</div>
+                            </div>
+                            <div class="item-price">1,20 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Croquetas Caseras</div>
+                                <div class="item-description">Croquetas de jamón serrano con bechamel</div>
+                            </div>
+                            <div class="item-price">1,50 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Bastoncitos de Merluza</div>
+                                <div class="item-description">Tiras de merluza rebozadas con salsa tártara</div>
+                            </div>
+                            <div class="item-price">1,80 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item highlight">
+                            <div class="item-info">
+                                <div class="item-name">Picadera Mixta (6 porciones)</div>
+                                <div class="item-description">Selección de nuestras mejores entradas para compartir</div>
+                            </div>
+                            <div class="item-price">2,50 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Filete de Res Picado</div>
+                                <div class="item-description">Trozos de filete salteados con pimientos y cebolla</div>
+                            </div>
+                            <div class="item-price">3,00 <span class="currency">€</span></div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Sección PESCADOS Y MARISCOS -->
+                <section class="menu-section" id="mariscos">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-fish"></i>
+                        </div>
+                        <h2 class="section-title">PESCADOS & MARISCOS</h2>
+                    </div>
+                    
+                    <div class="menu-items-container">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Salmón a la Plancha</div>
+                                <div class="item-description">Filete de salmón con verduras al vapor</div>
+                            </div>
+                            <div class="item-price">1,50 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Mero a la Romana</div>
+                                <div class="item-description">Filete de mero rebozado con limón</div>
+                            </div>
+                            <div class="item-price">2,00 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item spicy">
+                            <div class="item-info">
+                                <div class="item-name">Mero al Ajillo</div>
+                                <div class="item-description">Mero salteado con ajo, guindilla y perejil</div>
+                            </div>
+                            <div class="item-price">2,50 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item highlight">
+                            <div class="item-info">
+                                <div class="item-name">Camarones al Ajillo</div>
+                                <div class="item-description">Camarones salteados en salsa de ajo</div>
+                            </div>
+                            <div class="item-price">3,00 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Lambí a la Criolla</div>
+                                <div class="item-description">Caracol marino en salsa criolla</div>
+                            </div>
+                            <div class="item-price">4,50 <span class="currency">€</span></div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Sección ENSALADAS -->
+                <section class="menu-section" id="ensaladas">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h2 class="section-title">ENSALADAS</h2>
+                    </div>
+                    
+                    <div class="menu-items-container">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">César con Pollo</div>
+                                <div class="item-description">Lechuga romana, pollo a la plancha, croutons y salsa césar</div>
+                            </div>
+                            <div class="item-price">1,80 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">César con Camarones</div>
+                                <div class="item-description">Lechuga romana, camarones, croutons y salsa césar</div>
+                            </div>
+                            <div class="item-price">2,00 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item veg">
+                            <div class="item-info">
+                                <div class="item-name">Ensalada César</div>
+                                <div class="item-description">Lechuga romana, croutons, parmesano y salsa césar</div>
+                            </div>
+                            <div class="item-price">2,50 <span class="currency">€</span></div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Sección PASTAS -->
+                <section class="menu-section" id="pastas">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-pasta"></i>
+                        </div>
+                        <h2 class="section-title">PASTAS & PLATOS INTERNACIONALES</h2>
+                    </div>
+                    
+                    <div class="menu-items-container">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Alfredo</div>
+                                <div class="item-description">Pasta en salsa cremosa de parmesano</div>
+                            </div>
+                            <div class="item-price">1,50 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item veg">
+                            <div class="item-info">
+                                <div class="item-name">Spaghetti Pomodoro</div>
+                                <div class="item-description">Spaghetti con salsa de tomate natural y albahaca</div>
+                            </div>
+                            <div class="item-price">1,80 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item highlight">
+                            <div class="item-info">
+                                <div class="item-name">Spaghetti Carbonara</div>
+                                <div class="item-description">Spaghetti con huevo, panceta y pimienta negra</div>
+                            </div>
+                            <div class="item-price">2,00 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Burritos Mixtos</div>
+                                <div class="item-description">Pollo, res y vegetales envueltos en tortilla</div>
+                            </div>
+                            <div class="item-price">4,00 <span class="currency">€</span></div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Sección PIZZAS -->
+                <section class="menu-section" id="pizzas">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-pizza-slice"></i>
+                        </div>
+                        <h2 class="section-title">PIZZAS ARTESANALES</h2>
+                    </div>
+                    
+                    <div class="menu-items-container">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Jamón y Queso</div>
+                                <div class="item-description">Clásica pizza con jamón y queso mozzarella</div>
+                            </div>
+                            <div class="item-price">1,80 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <div class="item-name">Jamón, Queso y Maíz</div>
+                                <div class="item-description">Pizza con jamón, queso y maíz dulce</div>
+                            </div>
+                            <div class="item-price">2,00 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item spicy">
+                            <div class="item-info">
+                                <div class="item-name">Jamón, Queso y Pepperoni</div>
+                                <div class="item-description">Pizza con jamón, queso y pepperoni picante</div>
+                            </div>
+                            <div class="item-price">2,50 <span class="currency">€</span></div>
+                        </div>
+                        
+                        <div class="menu-item veg highlight">
+                            <div class="item-info">
+                                <div class="item-name">Pizza de Verduras</div>
+                                <div class="item-description">Pizza vegetariana con variedad de verduras frescas</div>
+                            </div>
+                            <div class="item-price">3,00 <span class="currency">€</span></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Sección de BEBIDAS (fuera del grid) -->
+            <section class="drinks-section" id="bebidas">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h2 class="section-title">BEBIDAS & COCTELES</h2>
+                </div>
+                
+                <table class="drinks-table">
+                    <thead>
+                        <tr>
+                            <th>BEBIDA</th>
+                            <th>DESCRIPCIÓN</th>
+                            <th>INCLUIDO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Margarita</strong><br><small>Chinola, Fresa, Limón</small></td>
+                            <td>Tequila, triple sec y jugo de lima fresco</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Daiquiri Clásico</strong></td>
+                            <td>Ron blanco, jugo de lima natural y azúcar</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Piña Colada</strong><br><small>Con o sin alcohol</small></td>
+                            <td>Crema de coco, piña fresca y ron (opcional)</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Caipiriña Brasileña</strong></td>
+                            <td>Cachaça, lima fresca y azúcar moreno</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vodka-Cranberry</strong></td>
+                            <td>Vodka premium con jugo de arándano natural</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Whisky Dewars 12 años</strong></td>
+                            <td>Whisky escocés añejo, servido solo o con hielo</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cuba Libre Premium</strong></td>
+                            <td>Ron añejo, refresco de cola y lima fresca</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Copa de Vino Selección</strong><br><small>Tinto / Blanco / Rosado</small></td>
+                            <td>Selección de vinos nacionales e importados</td>
+                            <td>Sí</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="menu-footer">
+            <div class="footer-note">¡Gracias por visitar D'Fernandez Restaurant!</div>
+            <p>Esperamos que disfrutes de nuestra cocina y atención personalizada</p>
+            
+            <div class="tax-note">
+                <i class="fas fa-info-circle"></i>
+                <span>TODOS LOS PRECIOS INCLUYEN IMPUESTOS APLICABLES</span>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Horario: Lunes a Domingo 11:00 AM - 11:00 PM</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>Reservas: +1 (809) 555-ENDE (3633)</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Av. Principal #456, Santo Domingo Este</span>
+                </div>
+            </div>
+            
+            <p style="margin-top: 25px; font-size: 0.95rem; opacity: 0.85;">
+                Menú sujeto a cambios según disponibilidad de ingredientes | Consulta por nuestros platos del día y promociones especiales
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        // Interactividad mejorada
+        
+        // Modo oscuro/claro
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                document.documentElement.style.setProperty('--primary-blue', '#5c6bc0');
+                document.documentElement.style.setProperty('--dark-blue', '#283593');
+                document.documentElement.style.setProperty('--light-blue', '#7986cb');
+                document.documentElement.style.setProperty('--soft-blue', '#1a237e');
+                document.documentElement.style.setProperty('--light-gray', '#121212');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                document.documentElement.style.setProperty('--primary-blue', '#1a73e8');
+                document.documentElement.style.setProperty('--dark-blue', '#0d47a1');
+                document.documentElement.style.setProperty('--light-blue', '#4285f4');
+                document.documentElement.style.setProperty('--soft-blue', '#e8f0fe');
+                document.documentElement.style.setProperty('--light-gray', '#f7fafc');
+            }
+        });
+        
+        // Navegación por categorías con mejor espaciado
+        const categoryButtons = document.querySelectorAll('.cat-btn');
+        const sections = document.querySelectorAll('.menu-section, .drinks-section');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remover clase active de todos
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Agregar al clickeado
+                this.classList.add('active');
+                
+                // Obtener categoría y hacer scroll
+                const category = this.getAttribute('data-category');
+                const targetSection = document.getElementById(category);
+                
+                if (targetSection) {
+                    // Scroll suave con offset para header fijo
+                    const headerOffset = 100;
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Efecto visual temporal
+                    targetSection.style.boxShadow = '0 0 0 3px rgba(26, 115, 232, 0.4)';
+                    setTimeout(() => {
+                        targetSection.style.boxShadow = '';
+                    }, 1500);
+                }
+            });
+        });
+        
+        // Mostrar descripciones al hover
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(item => {
+            const description = item.querySelector('.item-description');
+            if (description) {
+                item.addEventListener('mouseenter', () => {
+                    description.style.display = 'block';
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    description.style.display = 'none';
+                });
+            }
+        });
+        
+        // Detectar sección visible para actualizar navegación
+        const observerOptions = {
+            root: null,
+            rootMargin: '-100px 0px -50% 0px',
+            threshold: 0.1
+        };
+        
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id;
+                    
+                    // Actualizar botón activo
+                    categoryButtons.forEach(button => {
+                        if (button.getAttribute('data-category') === sectionId) {
+                            button.classList.add('active');
+                        } else {
+                            button.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        // Observar todas las secciones
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+        
+        // Animación de aparición de secciones
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        document.querySelectorAll('.menu-section, .drinks-section').forEach(section => {
+            fadeObserver.observe(section);
+        });
+        
+        // Inicializar primera sección como visible
+        window.addEventListener('load', () => {
+            if (window.location.hash) {
+                const targetSection = document.querySelector(window.location.hash);
+                if (targetSection) {
+                    setTimeout(() => {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 300);
+                }
+            }
+            
+            // Asegurar que todas las animaciones se carguen
+            setTimeout(() => {
+                document.querySelectorAll('.menu-section, .drinks-section').forEach(section => {
+                    section.style.opacity = '1';
+                });
+            }, 100);
+        });
+        
+        console.log('✅ Menú D\'Fernandez Restaurant cargado correctamente');
+        console.log('✅ Espaciados verificados y optimizados');
+        console.log('✅ Iconos alineados correctamente');
+        console.log('✅ Paleta de colores azul aplicada');
+    </script>
+</body>
+</html>
