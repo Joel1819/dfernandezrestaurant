@@ -34,6 +34,7 @@
             margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 3px solid #2c3e50;
+            position: relative;
         }
         
         .restaurant-name {
@@ -53,6 +54,8 @@
         /* Secciones del menú */
         .menu-section {
             margin-bottom: 25px;
+            position: relative;
+            padding-top: 20px;
         }
         
         .section-title {
@@ -62,6 +65,17 @@
             padding-bottom: 8px;
             border-bottom: 2px solid #e74c3c;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e74c3c;
         }
         
         .menu-items {
@@ -72,10 +86,10 @@
         .menu-item {
             display: flex;
             justify-content: space-between;
-            align-items: center; /* Centra verticalmente */
+            align-items: center;
             padding: 12px 0;
             border-bottom: 1px dotted #ddd;
-            min-height: 45px; /* Altura mínima para consistencia */
+            min-height: 45px;
         }
         
         .menu-item:last-child {
@@ -85,7 +99,7 @@
         .item-name {
             font-weight: bold;
             flex: 1;
-            padding-right: 15px; /* Espacio entre nombre y precio */
+            padding-right: 15px;
             font-size: 1.05rem;
         }
         
@@ -95,8 +109,8 @@
             min-width: 120px;
             text-align: right;
             font-size: 1.1rem;
-            white-space: nowrap; /* Evita que el precio se divida en líneas */
-            flex-shrink: 0; /* Evita que se encoja en móvil */
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         
         /* Tabla para bebidas */
@@ -160,11 +174,15 @@
                 font-size: 1.6rem;
             }
             
-            /* IMPORTANTE: MANTENER PRECIO A LA DERECHA EN MÓVIL */
+            .section-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
             .menu-item {
                 display: flex;
-                flex-direction: row; /* Mantiene horizontal en móvil */
-                align-items: center; /* Centra verticalmente */
+                flex-direction: row;
+                align-items: center;
                 padding: 10px 0;
                 min-height: 40px;
             }
@@ -172,20 +190,19 @@
             .item-name {
                 font-size: 1rem;
                 padding-right: 10px;
-                overflow-wrap: break-word; /* Permite que nombres largos se dividan */
+                overflow-wrap: break-word;
                 word-wrap: break-word;
                 flex: 1;
             }
             
             .item-price {
                 text-align: right;
-                margin-top: 0; /* Sin margen superior */
+                margin-top: 0;
                 min-width: 100px;
                 font-size: 1rem;
-                align-self: center; /* Mantiene alineado verticalmente */
+                align-self: center;
             }
             
-            /* Tablas en móvil */
             .drinks-table {
                 font-size: 0.9rem;
             }
@@ -214,6 +231,11 @@
                 font-size: 1.4rem;
             }
             
+            .section-icon {
+                width: 30px;
+                height: 30px;
+            }
+            
             .menu-item {
                 padding: 8px 0;
             }
@@ -227,7 +249,6 @@
                 min-width: 90px;
             }
             
-            /* Para pantallas muy pequeñas, ajustar aún más */
             @media (max-width: 350px) {
                 .item-price {
                     min-width: 80px;
@@ -236,6 +257,11 @@
                 
                 .item-name {
                     font-size: 0.9rem;
+                }
+                
+                .section-icon {
+                    width: 25px;
+                    height: 25px;
                 }
             }
         }
@@ -251,6 +277,10 @@
                 box-shadow: none;
                 padding: 15px;
             }
+            
+            .section-icon {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -264,7 +294,10 @@
         
         <!-- SECCIÓN SOPA -->
         <div class="menu-section">
-            <h2 class="section-title">SOPA</h2>
+            <h2 class="section-title">
+                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sopa" class="section-icon">
+                SOPA
+            </h2>
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">SOPA DE POLLO</span>
@@ -289,7 +322,10 @@
         
         <!-- SECCIÓN PICADERAS -->
         <div class="menu-section">
-            <h2 class="section-title">PICADERAS</h2>
+            <h2 class="section-title">
+                <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Picaderas" class="section-icon">
+                PICADERAS
+            </h2>
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">BOLITAS DE QUESO</span>
@@ -322,7 +358,10 @@
         
         <!-- SECCIÓN PESCADOS Y MARISCOS -->
         <div class="menu-section">
-            <h2 class="section-title">PESCADOS Y MARISCOS</h2>
+            <h2 class="section-title">
+                <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Pescados y Mariscos" class="section-icon">
+                PESCADOS Y MARISCOS
+            </h2>
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">SALMÓN</span>
@@ -367,7 +406,10 @@
         
         <!-- SECCIÓN ENSALADAS -->
         <div class="menu-section">
-            <h2 class="section-title">ENSALADAS</h2>
+            <h2 class="section-title">
+                <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Ensaladas" class="section-icon">
+                ENSALADAS
+            </h2>
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">CÉSAR CON POLLO</span>
@@ -388,7 +430,10 @@
         
         <!-- SECCIÓN PASTAS -->
         <div class="menu-section">
-            <h2 class="section-title">PASTAS</h2>
+            <h2 class="section-title">
+                <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Pastas" class="section-icon">
+                PASTAS
+            </h2>
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">ALFREDO</span>
@@ -441,7 +486,10 @@
         
         <!-- SECCIÓN PIZZA -->
         <div class="menu-section">
-            <h2 class="section-title">PIZZA</h2>
+            <h2 class="section-title">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Pizza" class="section-icon">
+                PIZZA
+            </h2>
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">PIZZA DE JAMÓN Y QUESO</span>
@@ -478,7 +526,10 @@
         
         <!-- SECCIÓN MOFONGOS -->
         <div class="menu-section">
-            <h2 class="section-title">MOFONGOS</h2>
+            <h2 class="section-title">
+                <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Mofongos" class="section-icon">
+                MOFONGOS
+            </h2>
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">MOFONGO DE CAMARÓN</span>
@@ -503,7 +554,10 @@
         
         <!-- SECCIÓN SANDWICH -->
         <div class="menu-section">
-            <h2 class="section-title">SANDWICH</h2>
+            <h2 class="section-title">
+                <img src="https://images.unsplash.com/photo-1481070414801-51fd732d7184?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sandwich" class="section-icon">
+                SANDWICH
+            </h2>
             <ul class="menu-items">
                 <li class="menu-item">
                     <span class="item-name">JAMÓN Y QUESO</span>
@@ -551,7 +605,10 @@
             
             <!-- SECCIÓN BEBIDAS CON ALCOHOL -->
             <div class="menu-section">
-                <h2 class="section-title">BEBIDAS CON ALCOHOL</h2>
+                <h2 class="section-title">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Bebidas con Alcohol" class="section-icon">
+                    BEBIDAS CON ALCOHOL
+                </h2>
                 <table class="drinks-table">
                     <thead>
                         <tr>
@@ -640,7 +697,10 @@
             
             <!-- SECCIÓN CARNES -->
             <div class="menu-section">
-                <h2 class="section-title">CARNES</h2>
+                <h2 class="section-title">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Carnes" class="section-icon">
+                    CARNES
+                </h2>
                 <ul class="menu-items">
                     <li class="menu-item">
                         <span class="item-name">CHURRASCO CORROLLO</span>
@@ -693,7 +753,10 @@
             
             <!-- SECCIÓN AVES -->
             <div class="menu-section">
-                <h2 class="section-title">AVES</h2>
+                <h2 class="section-title">
+                    <img src="https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Aves" class="section-icon">
+                    AVES
+                </h2>
                 <ul class="menu-items">
                     <li class="menu-item">
                         <span class="item-name">ALITAS BUFFALO PICANTES</span>
@@ -734,7 +797,10 @@
             
             <!-- SECCIÓN ARROCES -->
             <div class="menu-section">
-                <h2 class="section-title">ARROCES</h2>
+                <h2 class="section-title">
+                    <img src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Arroces" class="section-icon">
+                    ARROCES
+                </h2>
                 <ul class="menu-items">
                     <li class="menu-item">
                         <span class="item-name">ARROZ MARINERA</span>
@@ -763,7 +829,10 @@
             
             <!-- SECCIÓN ACOMPAÑAMIENTOS -->
             <div class="menu-section">
-                <h2 class="section-title">ACOMPAÑAMIENTOS</h2>
+                <h2 class="section-title">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Acompañamientos" class="section-icon">
+                    ACOMPAÑAMIENTOS
+                </h2>
                 <ul class="menu-items">
                     <li class="menu-item">
                         <span class="item-name">SERVICIO DE FRITO VERDE</span>
@@ -784,7 +853,10 @@
             
             <!-- SECCIÓN CAFÉ -->
             <div class="menu-section">
-                <h2 class="section-title">CAFÉ</h2>
+                <h2 class="section-title">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Café" class="section-icon">
+                    CAFÉ
+                </h2>
                 <ul class="menu-items">
                     <li class="menu-item">
                         <span class="item-name">CAFÉ CON LECHE</span>
@@ -809,5 +881,6 @@
     </div>
 </body>
 </html>
+
 
 
